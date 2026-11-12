@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anthony Joel Freyle Aroca | Portafolio de Transformación Digital</title>
+    <title>Portafolio de Transformación | Anthony Joel Freyle Aroca</title>
     <!-- Tipografías: JetBrains Mono para código/titulares, Plus Jakarta Sans para lectura -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,7 +48,6 @@
         a { color: var(--accent-light); text-decoration: none; transition: var(--transition); }
         a:hover { color: #C4B5FD; }
 
-        /* Accesibilidad WCAG 2.2: Focus Appearance & Target Size >= 24x24px */
         :focus-visible {
             outline: 2px solid var(--accent-light);
             outline-offset: 3px;
@@ -72,7 +71,7 @@
         }
 
         .nav-logo { font-weight: 700; font-size: 1.15rem; letter-spacing: -0.5px; color: var(--text-main); }
-        .nav-logo span { color: var(--accent); }
+        .nav-logo span { color: var(--accent-light); }
         .nav-links { display: flex; align-items: center; gap: 1.8rem; }
         .nav-links a { 
             color: var(--text-main); 
@@ -123,6 +122,7 @@
             border-radius: 99px;
             width: fit-content;
             margin-bottom: 1.5rem;
+            text-transform: uppercase;
         }
 
         .hero h1 {
@@ -334,6 +334,9 @@
             overflow: hidden;
             border: 1px solid var(--border);
             background: #14171D;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .photo-wrapper img {
             width: 100%;
@@ -382,11 +385,11 @@
         .section-subtitle {
             color: var(--text-muted);
             margin-top: -2rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             font-size: 0.98rem;
         }
 
-        /* Filtros superiores de proyectos */
+        /* Indicador único de ecosistemas */
         .project-filters {
             display: flex;
             gap: 0.8rem;
@@ -394,22 +397,17 @@
             margin-bottom: 2.5rem;
         }
         .filter-btn {
-            background: var(--surface);
-            color: var(--text-muted);
-            border: 1px solid var(--border);
+            background: var(--accent);
+            color: #fff;
+            border: 1px solid var(--accent);
             padding: 0.55rem 1.2rem;
             min-height: 38px;
             border-radius: 6px;
             font-family: var(--font-mono);
             font-size: 0.82rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--accent);
-            color: #fff;
-            border-color: var(--accent);
+            font-weight: 700;
             box-shadow: 0 4px 12px var(--accent-glow);
+            cursor: default;
         }
 
         .projects-grid {
@@ -524,143 +522,12 @@
 
         .card-footer-actions {
             margin-top: auto;
-            pt: 1rem;
             border-top: 1px solid var(--border);
             padding-top: 1.2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .btn-inspect {
-            width: 100%;
-            background: var(--surface-hover);
-            color: var(--text-main);
-            border: 1px solid var(--border);
-            padding: 0.7rem 1rem;
-            min-height: 40px;
-            border-radius: 6px;
-            font-family: var(--font-mono);
-            font-size: 0.82rem;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            transition: var(--transition);
-        }
-        .btn-inspect:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: #fff;
         }
 
         /* =========================================
-           MODAL DE ARQUITECTURA Y CÓDIGO POWER FX
-           ========================================= */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(10, 12, 16, 0.85);
-            backdrop-filter: blur(8px);
-            z-index: 200;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-        }
-        .modal-overlay.open { display: flex; }
-
-        .modal-window {
-            background: var(--surface);
-            border: 1px solid var(--accent);
-            border-radius: 10px;
-            max-width: 850px;
-            width: 100%;
-            max-height: 88vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-            animation: fadeIn 0.25s ease;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.4rem 2rem;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            background: var(--surface);
-            z-index: 10;
-        }
-        .modal-header h3 { font-size: 1.3rem; color: var(--text-main); }
-        .modal-close {
-            background: var(--surface-hover);
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            width: 36px;
-            height: 36px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .modal-close:hover { background: var(--accent); border-color: var(--accent); }
-
-        .modal-body { padding: 2rem; }
-        .modal-body h4 {
-            font-size: 0.95rem;
-            color: var(--accent-light);
-            margin: 1.5rem 0 0.75rem;
-            text-transform: uppercase;
-        }
-        .modal-body h4:first-child { margin-top: 0; }
-        .modal-body p { color: var(--text-muted); font-size: 0.93rem; margin-bottom: 1rem; }
-
-        .code-block {
-            background: #0B0D11;
-            border: 1px solid var(--border);
-            border-left: 3px solid var(--accent);
-            padding: 1rem 1.2rem;
-            border-radius: 6px;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: #E5E7EB;
-            overflow-x: auto;
-            white-space: pre;
-            margin-bottom: 1.2rem;
-            line-height: 1.5;
-        }
-
-        .modal-spec-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 0.8rem;
-            margin-bottom: 1.2rem;
-        }
-        .modal-spec-item {
-            background: var(--surface-elevated);
-            border: 1px solid var(--border);
-            padding: 0.8rem;
-            border-radius: 6px;
-        }
-        .modal-spec-item span {
-            display: block;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-family: var(--font-mono);
-        }
-        .modal-spec-item strong {
-            font-size: 0.9rem;
-            color: var(--text-main);
-        }
-
-        /* =========================================
-           SECCIÓN: TESTIMONIOS
+           SECCIÓN: TESTIMONIOS (Solo Cargos)
            ========================================= */
         .testimonials-grid {
             display: grid;
@@ -682,15 +549,36 @@
             font-size: 0.95rem;
             margin-bottom: 1.5rem;
         }
-        .testimonial-author strong {
+        .testimonial-author span {
             display: block;
             font-family: var(--font-mono);
-            font-size: 0.95rem;
-            color: var(--text-main);
-        }
-        .testimonial-author span {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            font-weight: 600;
             color: var(--accent-light);
+        }
+
+        /* Toast de notificación al copiar correo */
+        .toast-msg {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--surface-elevated);
+            border: 1px solid var(--accent);
+            color: var(--text-main);
+            padding: 0.85rem 1.2rem;
+            border-radius: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            z-index: 300;
+            opacity: 0;
+            transform: translateY(15px);
+            pointer-events: none;
+            transition: var(--transition);
+        }
+        .toast-msg.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* =========================================
@@ -742,7 +630,8 @@
 <body>
 
     <nav>
-        <div class="nav-logo mono">&lt;Anthony_Freyle <span>/&gt;</span></div>
+        <!-- Cambio 1: Portafolio de Transformación -->
+        <div class="nav-logo mono">Portafolio de <span>Transformación</span></div>
         <div class="nav-links">
             <a href="#about">Perfil</a>
             <a href="#projects">Operaciones</a>
@@ -752,14 +641,17 @@
     </nav>
 
     <header class="hero">
+        <!-- Cambio 2: Especialista de Transformación y Automatizaciones -->
         <div class="hero-badge reveal">
-            <i class="fa-solid fa-bolt"></i> INGENIERÍA DE SISTEMAS DE CALIDAD & TRANSFORMACIÓN DIGITAL
+            <i class="fa-solid fa-bolt"></i> ESPECIALISTA DE TRANSFORMACIÓN Y AUTOMATIZACIONES
         </div>
         <h1 class="reveal">El caos operativo es el <span>enemigo del crecimiento</span>.</h1>
-        <p class="reveal">Mi misión es simple: transformarlo en ecosistemas digitales precisos, automatizados y escalables. No me limito a escribir código o configurar herramientas; construyo operaciones inteligentes que devuelven el control, el tiempo y la agilidad a los equipos de alto nivel.</p>
+        <!-- Cambio 3: Nuevo texto de misión -->
+        <p class="reveal">Mi misión es transformar ecosistemas digitales precisos, automatizados y escalables, construyo operaciones inteligentes que devuelven el control, el tiempo y la agilidad a los equipos de alto nivel.</p>
         <div class="hero-buttons reveal">
             <a href="#projects" class="btn"><i class="fa-solid fa-code-branch"></i> Explorar Ecosistemas Interactivos</a>
-            <a href="mailto:anthony_freyle27@hotmail.com" class="btn btn-outline"><i class="fa-regular fa-envelope"></i> Conectar ahora</a>
+            <!-- Botón de correo optimizado -->
+            <a href="mailto:anthony_freyle27@hotmail.com" onclick="copyCleanEmail()" class="btn btn-outline"><i class="fa-regular fa-envelope"></i> Conectar ahora</a>
         </div>
 
         <div class="hero-stats reveal">
@@ -788,13 +680,15 @@
         <div class="about-grid">
             <div class="about-text reveal">
                 <p>Soy <strong>Anthony Joel Freyle Aroca</strong>, <strong>Ingeniero en Sistemas de Calidad</strong> graduado en la <strong>Universidad de Guayaquil</strong> y especialista en transformación digital corporativa desde Guayaquil, Ecuador.</p>
-                <p>Actualmente me desempeño como <strong>Ingeniero de Procesos y Transformación</strong> en <strong>Corporación Farmacéutica FC (FARMCORP)</strong>, liderando el diseño, desarrollo e implementación in-house de plataformas críticas sobre el ecosistema <strong>Microsoft Power Platform</strong> (Power Apps Canvas, Power Automate, SharePoint Online y Power Fx).</p>
+                <!-- Cambio 4: Corporación Farmacéutica Farmcorp S.A. -->
+                <p>Actualmente me desempeño como <strong>Ingeniero de Procesos y Transformación</strong> en <strong>Corporación Farmacéutica Farmcorp S.A.</strong>, liderando el diseño, desarrollo e implementación in-house de plataformas críticas sobre el ecosistema <strong>Microsoft Power Platform</strong> (Power Apps Canvas, Power Automate, SharePoint Online y Power Fx).</p>
                 <p>Mi enfoque combina la rigurosidad del gobierno de procesos con la <strong>co-construcción junto a los usuarios de negocio</strong>: convierto necesidades reales de campo, sucursales y áreas corporativas en aplicaciones de alto rendimiento y costo marginal cero en licenciamiento adicional.</p>
 
                 <div class="philosophy-pillars">
+                    <!-- Cambio 6: Eliminado el 8,8/10 -->
                     <div class="pillar-card">
-                        <h4><i class="fa-solid fa-Compass-drafting"></i> Co-Construcción Ágil</h4>
-                        <p>Iteración continua junto a los equipos de campo para lograr adopciones superiores al 8,8/10 en usabilidad.</p>
+                        <h4><i class="fa-solid fa-compass-drafting"></i> Co-Construcción Ágil</h4>
+                        <p>Iteración continua junto a los equipos de campo para lograr altas tasas de adopción y máxima usabilidad operativa.</p>
                     </div>
                     <div class="pillar-card">
                         <h4><i class="fa-solid fa-shield-halved"></i> Gobierno en Código</h4>
@@ -806,12 +700,12 @@
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-role">Ingeniero de Procesos y Transformación</div>
-                        <div class="timeline-meta">Corporación Farmacéutica FC · Sept. 2025 – Actualidad</div>
+                        <div class="timeline-meta">Corporación Farmacéutica Farmcorp S.A. · Sept. 2025 – Actualidad</div>
                         <div class="timeline-desc">Arquitectura, desarrollo y documentación técnico-funcional de los ecosistemas corporativos NEXO, NEO y Centro de Gestión Interactiva.</div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-role">Asistente de Procesos y Mejora Continua</div>
-                        <div class="timeline-meta">Corporación Farmacéutica FC · Ene. 2025 – Sept. 2025</div>
+                        <div class="timeline-meta">Corporación Farmacéutica Farmcorp S.A. · Ene. 2025 – Sept. 2025</div>
                         <div class="timeline-desc">Automatización de flujos operativos con Microsoft Power Automate, estandarización documental y optimización de tiempos de respuesta.</div>
                     </div>
                     <div class="timeline-item">
@@ -821,12 +715,12 @@
                     </div>
                 </div>
 
+                <!-- Eliminado Power BI de las opciones de abajo -->
                 <div class="tech-stack">
                     <span class="tech-tag">Power Apps Canvas</span>
                     <span class="tech-tag">Power Automate</span>
                     <span class="tech-tag">SharePoint Online</span>
                     <span class="tech-tag">Fórmulas Power Fx</span>
-                    <span class="tech-tag">Power BI</span>
                     <span class="tech-tag">Gobierno de Procesos</span>
                     <span class="tech-tag">Arquitectura Low-Code</span>
                 </div>
@@ -835,12 +729,15 @@
             <!-- Fotografía Personal Real -->
             <div class="about-image-card reveal">
                 <div class="photo-wrapper">
-                    <img src="WhatsApp Image 2026-11-12 at 16.31.07_2.jpeg" alt="Anthony Joel Freyle Aroca - Ingeniero de Transformación Digital">
+                    <!-- Si subes tu foto a Postimages.org, pega el enlace directo en src="..." -->
+                    <img src="WhatsApp Image 2026-11-12 at 16.31.07_2.jpeg" 
+                         onerror="this.onerror=null; this.src='WhatsApp Image 2026-11-12 at 16.31.07.jpeg';" 
+                         alt="Anthony Joel Freyle Aroca">
                 </div>
                 <div class="photo-caption">
                     <div class="photo-caption-text">
                         <strong>Anthony Joel Freyle Aroca</strong>
-                        <span>Guayaquil, Ecuador · FARMCORP</span>
+                        <span>Guayaquil, Ecuador · Corporación Farmacéutica Farmcorp S.A.</span>
                     </div>
                     <span class="status-dot"><i class="fa-solid fa-circle" style="font-size: 0.5rem;"></i> Activo</span>
                 </div>
@@ -851,13 +748,11 @@
     <!-- SECCIÓN 02: PROYECTOS INTERACTIVOS -->
     <section id="projects">
         <h2 class="section-title reveal">02. Plataformas Desplegadas</h2>
-        <p class="section-subtitle reveal">Explora las pestañas de cada proyecto para conocer sus bondades operativas, arquitectura e impacto, o inspecciona las fórmulas técnicas implementadas.</p>
+        <p class="section-subtitle reveal">Explora las pestañas de cada proyecto para conocer sus bondades operativas, arquitectura e impacto en la organización.</p>
 
-        <!-- Filtros de categoría -->
-        <div class="project-filters reveal" role="tablist" aria-label="Filtrar proyectos">
-            <button class="filter-btn active" onclick="filterProjects('all', this)">Todos los Ecosistemas (3)</button>
-            <button class="filter-btn" onclick="filterProjects('mobile', this)">Operación Móvil de Campo</button>
-            <button class="filter-btn" onclick="filterProjects('desktop', this)">Gobierno Documental & Sucursales</button>
+        <!-- Imagen 3: Solo queda "Todos los Ecosistemas (3)" -->
+        <div class="project-filters reveal">
+            <div class="filter-btn">Todos los Ecosistemas (3)</div>
         </div>
 
         <div class="projects-grid">
@@ -865,7 +760,7 @@
             <!-- =====================================
                  PROYECTO 1: NEXO
                  ===================================== -->
-            <div class="project-card reveal" data-category="mobile">
+            <div class="project-card reveal">
                 <div class="project-header">
                     <div>
                         <span class="project-badge">APP MÓVIL · 640 × 1136 PX</span>
@@ -883,11 +778,11 @@
 
                 <!-- Tab 1: Bondades e Impacto -->
                 <div id="nexo-impacto" class="card-tab-content active">
-                    <p class="project-desc">Aplicación móvil corporativa distribuida vía Power Apps Mobile que digitaliza y unifica la operación de campo de la red de retail farmacéutico: planificación semanal, ejecución de visitas, geolocalización, inspecciones SSO, StoreCheck y reportería automatizada.</p>
+                    <p class="project-desc">Aplicación móvil corporativa distribuida vía Power Apps Mobile que digitaliza y unificar la operación de campo de la red de retail farmacéutico: planificación semanal, ejecución de visitas, geolocalización, inspecciones SSO, StoreCheck y reportería automatizada.</p>
                     <div class="metrics">
                         <div class="metric-item"><i class="fa-solid fa-sack-dollar"></i> <span><strong>-$13.800/año</strong> en ahorro recurrente frente a proveedor externo (inversión única de $625).</span></div>
                         <div class="metric-item"><i class="fa-solid fa-bolt"></i> <span><strong>+1.500 gestiones/mes</strong> ejecutadas por 50 usuarios en 5 áreas operativas.</span></div>
-                        <div class="metric-item"><i class="fa-regular fa-clock"></i> <span><strong>-75% tiempo</strong> invertido en consolidación de reportería y calificación 8,8/10 en usabilidad.</span></div>
+                        <div class="metric-item"><i class="fa-regular fa-clock"></i> <span><strong>-75% tiempo</strong> invertido en consolidación de reportería semanal.</span></div>
                     </div>
                 </div>
 
@@ -911,10 +806,8 @@
                     </div>
                 </div>
 
+                <!-- Imagen 3: Eliminado el botón Inspeccionar Arquitectura & Power Fx -->
                 <div class="card-footer-actions">
-                    <button class="btn-inspect" onclick="openModal('modal-nexo')">
-                        <i class="fa-solid fa-terminal"></i> Inspeccionar Arquitectura & Power Fx
-                    </button>
                     <div class="tech-stack" style="margin-top: 0;">
                         <span class="tech-tag">Power Apps Mobile</span>
                         <span class="tech-tag">Haversine GPS</span>
@@ -926,7 +819,7 @@
             <!-- =====================================
                  PROYECTO 2: NEO
                  ===================================== -->
-            <div class="project-card reveal" data-category="desktop">
+            <div class="project-card reveal">
                 <div class="project-header">
                     <div>
                         <span class="project-badge">DESKTOP / TABLET · 1366 × 680 PX</span>
@@ -944,7 +837,7 @@
 
                 <!-- Tab 1: Bondades e Impacto -->
                 <div id="neo-impacto" class="card-tab-content active">
-                    <p class="project-desc">Sistema maestro documental corporativo que ordena, controla y da trazabilidad al ciclo de vida completo de los procesos de FARMCORP, desde su identificación hasta su publicación en el portal NEO+.</p>
+                    <p class="project-desc">Sistema maestro documental corporativo que ordena, controla y da trazabilidad al ciclo de vida completo de los procesos de Corporación Farmacéutica Farmcorp S.A., desde su identificación hasta su publicación en el portal NEO+.</p>
                     <div class="metrics">
                         <div class="metric-item"><i class="fa-solid fa-shield-halved"></i> <span><strong>Única versión vigente:</strong> Elimina versiones paralelas marcando como <code>OBSOLETO</code> el historial previo.</span></div>
                         <div class="metric-item"><i class="fa-solid fa-check-double"></i> <span><strong>Doble instancia de aprobación:</strong> Secuencia obligatoria entre Jefatura E&T y Líder de Área.</span></div>
@@ -972,10 +865,8 @@
                     </div>
                 </div>
 
+                <!-- Imagen 3: Eliminado el botón Inspeccionar Arquitectura & Power Fx -->
                 <div class="card-footer-actions">
-                    <button class="btn-inspect" onclick="openModal('modal-neo')">
-                        <i class="fa-solid fa-terminal"></i> Inspeccionar Arquitectura & Power Fx
-                    </button>
                     <div class="tech-stack" style="margin-top: 0;">
                         <span class="tech-tag">Power Apps Desktop</span>
                         <span class="tech-tag">SharePoint Online</span>
@@ -987,7 +878,7 @@
             <!-- =====================================
                  PROYECTO 3: CENTRO DE GESTIÓN INTERACTIVA (CGI)
                  ===================================== -->
-            <div class="project-card reveal" data-category="desktop">
+            <div class="project-card reveal">
                 <div class="project-header">
                     <div>
                         <span class="project-badge">SUCURSALES / PDV · 1366 × 680 PX</span>
@@ -1033,10 +924,8 @@
                     </div>
                 </div>
 
+                <!-- Imagen 3: Eliminado el botón Inspeccionar Arquitectura & Power Fx -->
                 <div class="card-footer-actions">
-                    <button class="btn-inspect" onclick="openModal('modal-cgi')">
-                        <i class="fa-solid fa-terminal"></i> Inspeccionar Arquitectura & Power Fx
-                    </button>
                     <div class="tech-stack" style="margin-top: 0;">
                         <span class="tech-tag">UI Condicional</span>
                         <span class="tech-tag">Multi-Site SharePoint</span>
@@ -1048,182 +937,48 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 03: VOCES DE LA OPERACIÓN (Testimonios) -->
+    <!-- SECCIÓN 03: VOCES DE LA OPERACIÓN (Imagen 4: Sin nombres, solo cargos) -->
     <section id="impacto">
         <h2 class="section-title reveal">03. Impacto Real en la Operación</h2>
         <div class="testimonials-grid">
             <div class="testimonial-card reveal">
                 <p class="testimonial-quote">"Permite centralizar y gestionar los llamados de atención mediante un flujo de aprobaciones que garantiza un proceso más ágil, ordenado y eficiente."</p>
                 <div class="testimonial-author">
-                    <strong>Carlos Mosquera</strong>
                     <span>Analista de Nómina y Compensaciones · Usuario NEXO</span>
                 </div>
             </div>
             <div class="testimonial-card reveal">
                 <p class="testimonial-quote">"Yo utilizo NEXO. Es una herramienta muy amigable que me ayuda a realizar mi gestión diaria de una manera muy ágil y eficaz."</p>
                 <div class="testimonial-author">
-                    <strong>Víctor Guillén</strong>
                     <span>Analista de Calidad de Servicio · Usuario NEXO</span>
                 </div>
             </div>
             <div class="testimonial-card reveal">
                 <p class="testimonial-quote">"Uso NEXO como herramienta de reportería y seguimiento a mi equipo. Nos permite dar seguimiento del material entregado al punto de venta y cumplimiento del StoreCheck."</p>
                 <div class="testimonial-author">
-                    <strong>Johanna Castillo</strong>
                     <span>Coordinadora de Trademarketing · Usuaria NEXO</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- =========================================
-         MODALES TÉCNICOS INTERACTIVOS
-         ========================================= -->
-    
-    <!-- Modal 1: NEXO -->
-    <div id="modal-nexo" class="modal-overlay" onclick="closeModalOnBg(event, 'modal-nexo')">
-        <div class="modal-window" role="dialog" aria-labelledby="title-modal-nexo">
-            <div class="modal-header">
-                <h3 id="title-modal-nexo"><i class="fa-solid fa-mobile-screen-button" style="color:var(--accent);"></i> Ficha Técnica & Power Fx — NEXO</h3>
-                <button class="modal-close" onclick="closeModal('modal-nexo')" aria-label="Cerrar modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-spec-grid">
-                    <div class="modal-spec-item"><span>PAQUETE MSAPP</span><strong>NEXO_FFC.msapp</strong></div>
-                    <div class="modal-spec-item"><span>LAYOUT NATIVO</span><strong>640 × 1136 (Portrait)</strong></div>
-                    <div class="modal-spec-item"><span>ESCALA DE INTERFAZ</span><strong>82 Pantallas / 47 Forms</strong></div>
-                    <div class="modal-spec-item"><span>INVERSIÓN VS AHORRO</span><strong>$625 vs $13.800/año</strong></div>
-                </div>
-
-                <h4>1. Registro Inicial y Carga de Variables Globales (PT_COMPLETAR_PERFIL)</h4>
-                <p>El uso de <code>With + LookUp</code> evita repetir la consulta contra SharePoint en cada <code>Set</code>, mientras que <code>Concat</code> permite multi-asignación de regiones y zonas:</p>
-                <div class="code-block">=Notify("Gracias por completar tu registro"; NotificationType.Success);;
-Refresh('Datos de Usuarios');;
-With(
-    { MiUsuario: LookUp('Datos de Usuarios'; Correo = User().Email) };
-    Set(CARGO_APP; MiUsuario.Cargo.Value);;
-    Set(REGION_APP; Concat(MiUsuario.Region; Value; ", "));;
-    Set(ZONA_APP; Concat(MiUsuario.Zona; Value; ", "));;
-    Set(AREA_APP; MiUsuario.Área.Value)
-);;
-If(AREA_APP = "Marketing y Experiencia del Cliente";
-    Navigate(PT_INICIO_MKT_EXP; ScreenTransition.Fade);
-    Navigate(PT_INICIO_V3; ScreenTransition.Fade)
-)</div>
-
-                <h4>2. Regla de Negocio: Ventana de Planificación Semanal</h4>
-                <p>Habilita la carga de planificación exclusivamente de viernes a domingo (días >= 5 comenzando lunes) y discrimina por rol:</p>
-                <div class="code-block">=Set(Menu; false);
-If(Weekday(Now(), StartOfWeek.Monday) >= 5;
-    If(CARGO_APP = "Auditor de Inventario";
-        Navigate(PT_PLANIFICACIÓN_AUD; ScreenTransition.UnCover);;
-        NewForm(FO_PLANIFICACIÓN_AUD);
-        Navigate(PT_PLANIFICACIÓN_COM; ScreenTransition.UnCover);;
-        NewForm(FO_PLANIFICACIÓN_COM)
-    );
-    Notify("No tiene permiso para planificar hoy, genere una emergente."; NotificationType.Error)
-)</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal 2: NEO -->
-    <div id="modal-neo" class="modal-overlay" onclick="closeModalOnBg(event, 'modal-neo')">
-        <div class="modal-window" role="dialog" aria-labelledby="title-modal-neo">
-            <div class="modal-header">
-                <h3 id="title-modal-neo"><i class="fa-solid fa-desktop" style="color:var(--accent);"></i> Ficha Técnica & Power Fx — NEO (MA-GET-04)</h3>
-                <button class="modal-close" onclick="closeModal('modal-neo')" aria-label="Cerrar modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-spec-grid">
-                    <div class="modal-spec-item"><span>DOCUMENTO / VERSIÓN</span><strong>DocVersion 1.349 (YAML 2.4)</strong></div>
-                    <div class="modal-spec-item"><span>LAYOUT NATIVO</span><strong>1366 × 680 (ScaleToFit)</strong></div>
-                    <div class="modal-spec-item"><span>CONTROLES TOTALES</span><strong>417 Textos / 92 DataCards</strong></div>
-                    <div class="modal-spec-item"><span>REPOSITORIO</span><strong>4 Listas SharePoint (/NEO)</strong></div>
-                </div>
-
-                <h4>1. Cálculo del Velocímetro de Avance Global (PT_USUARIO_ET)</h4>
-                <p>Calcula la proporción de documentos completados o con versión publicada (excluyendo bajas lógicas) y la transforma en un ángulo de 0° a 180°:</p>
-                <div class="code-block">=Set(Requerimiento, false); Set(Maestro, true); Set(Aprobaciones, false);
-Set(Giro_Negocio, "Retail"); Set(AdjuntaArchivo, false);
-Set(varPercentage,
-    CountIf('Gestión Documental Retail',
-        Estado.Value = "✅ Listo" Or 'Versión del documento' > 1,
-        Estado.Value <> "❌ Eliminado")
-    / CountIf('Gestión Documental Retail', Estado.Value <> "❌ Eliminado")
-);
-Set(varNeedleAngle, varPercentage * 180)</div>
-
-                <h4>2. Aprobación de Primera Instancia y Promoción a Revisión</h4>
-                <p>Promueve el documento a la bandeja del Líder de Área, registra sello de tiempo y sincroniza el estado en el Maestro Documental:</p>
-                <div class="code-block">=If(Confirm("Seguro que desea aprobar el documento"),
-    Patch('TRANSACCIONAL DE DOCUMENTOS', DocSelect,
-        { Fase: {Value: "Revisión"},
-          'Aprobación de EEC': {Value: "Aprobado"},
-          'Comentario del Jefe de E&T': TextInput1_1.Text,
-          'Fecha de Respuesta ET': Now() });
-    Patch('Gestión Documental Retail',
-        LookUp('Gestión Documental Retail', StartsWith(DocSelect.'Nombre del Documento', 'Código Proceso')),
-        { Estado: {Value: "🔍 En aprobación"} });
-    Set(VENTANA_DOCUMENTO, false);
-    Notify("SE HA APROBADO CON ÉXITO EL DOCUMENTO", NotificationType.Success)
-)</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal 3: CGI -->
-    <div id="modal-cgi" class="modal-overlay" onclick="closeModalOnBg(event, 'modal-cgi')">
-        <div class="modal-window" role="dialog" aria-labelledby="title-modal-cgi">
-            <div class="modal-header">
-                <h3 id="title-modal-cgi"><i class="fa-solid fa-network-wired" style="color:var(--accent);"></i> Ficha Técnica & Power Fx — Centro de Gestión Interactiva</h3>
-                <button class="modal-close" onclick="closeModal('modal-cgi')" aria-label="Cerrar modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-spec-grid">
-                    <div class="modal-spec-item"><span>PAQUETE MSAPP</span><strong>CGI (1366 × 680 px)</strong></div>
-                    <div class="modal-spec-item"><span>COMPONENTES UI</span><strong>8 Pantallas / 160 DataCards</strong></div>
-                    <div class="modal-spec-item"><span>CHECKLIST INTERACTIVO</span><strong>90 Controles Toggle</strong></div>
-                    <div class="modal-spec-item"><span>PERSISTENCIA</span><strong>Directa en 3 Sitios SP</strong></div>
-                </div>
-
-                <h4>1. Enrutamiento de Seguridad en StartScreen</h4>
-                <p>Clasifica automáticamente cuentas genéricas de farmacia (prefijo <code>fc</code>), supervisores zonales, personal administrativo y bloquea accesos no autorizados:</p>
-                <div class="code-block">=If(StartsWith(User().Email, "fc"), PT_INICIO,
-    Switch(User().Email,
-        "fernando.vera@farmcorp.com.ec", PT_APROBACIÓN_MAL_DESGLOSES,
-        "lady.garcia@farmcorp.com.ec", PT_APROBACIÓN_MAL_DESGLOSES,
-        "roy.dougherty@farmcorp.com.ec", PT_APROBACIÓN_MAL_DESGLOSES,
-        "lorena.velasco@farmcorp.com.ec", PT_APROBACIÓN_MAL_DESGLOSES,
-        PT_SIN_ACCESO
-    )
-)</div>
-
-                <h4>2. Consolidación Financiera Mensual del PDV (PT_INICIO)</h4>
-                <p>Agrega en tiempo real el monto depositado, sobrantes, faltantes, facturas y novedades del mes en curso para el punto de venta autenticado:</p>
-                <div class="code-block">="RESUMEN GLOBAL DEL MES" &
-" | Cantidad: $" & Text(Coalesce(Sum(Filter(Reportes_Diarios, POS = User().FullName,
-    Fecha >= Date(Year(Today()), Month(Today()), 1)), Cantidad_Depositada), 0), "#,##0.00") &
-" | Facturas reportadas: " & CountRows(Filter('Consolidado de Facturas Proveedores',
-    Punto_Venta = User().FullName, Fecha_Factura >= Date(Year(Today()), Month(Today()), 1))) &
-" | Novedades reportadas: " & CountRows(Filter(Reporte_mal_desglose, farmacia = User().FullName,
-    StartsWith(fecha_cierre_caja, Text(Today(), "yyyy-mm"))))</div>
-            </div>
-        </div>
-    </div>
-
     <footer id="contact">
         <div class="social-links reveal">
             <a href="https://www.linkedin.com/in/anthony-joel-freyle-aroca-1868b826a/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="mailto:anthony_freyle27@hotmail.com" aria-label="Correo"><i class="fa-solid fa-envelope"></i></a>
+            <a href="mailto:anthony_freyle27@hotmail.com" onclick="copyCleanEmail()" aria-label="Correo"><i class="fa-solid fa-envelope"></i></a>
         </div>
         <p class="mono reveal" style="color: var(--text-muted); font-size: 0.85rem;">Construido para escalar. Diseñado para liderar.</p>
         <p class="mono reveal" style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">&copy; 2026 Anthony Joel Freyle Aroca · Guayaquil, Ecuador.</p>
     </footer>
 
-    <!-- Scripts de Interactividad (View Transitions API + Intersection Observer) -->
+    <!-- Notificación flotante al copiar correo -->
+    <div id="email-toast" class="toast-msg">
+        <i class="fa-solid fa-check" style="color: var(--success);"></i> Correo copiado: anthony_freyle27@hotmail.com
+    </div>
+
+    <!-- Scripts de Interactividad -->
     <script>
-        // Cambio de pestañas internas en cada tarjeta usando View Transitions API cuando esté disponible
+        // Cambio de pestañas internas en cada tarjeta usando View Transitions API
         function switchTab(button, targetId) {
             const card = button.closest('.project-card');
             const updateDOM = () => {
@@ -1240,54 +995,17 @@ Set(varNeedleAngle, varPercentage * 180)</div>
             }
         }
 
-        // Filtro superior de proyectos con View Transitions API
-        function filterProjects(category, button) {
-            const updateFilter = () => {
-                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                document.querySelectorAll('.project-card').forEach(card => {
-                    if (category === 'all' || card.dataset.category === category) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
+        // Copia el correo limpio al portapapeles además de abrir el cliente de correo
+        function copyCleanEmail() {
+            const cleanEmail = "anthony_freyle27@hotmail.com";
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(cleanEmail).then(() => {
+                    const toast = document.getElementById('email-toast');
+                    toast.classList.add('show');
+                    setTimeout(() => toast.classList.remove('show'), 3500);
                 });
-            };
-
-            if (document.startViewTransition) {
-                document.startViewTransition(updateFilter);
-            } else {
-                updateFilter();
             }
         }
-
-        // Control de Modales Técnicos
-        function openModal(id) {
-            document.getElementById(id).classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('open');
-            document.body.style.overflow = 'auto';
-        }
-
-        function closeModalOnBg(event, id) {
-            if (event.target.id === id) {
-                closeModal(id);
-            }
-        }
-
-        // Cerrar modal con tecla Escape
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                document.querySelectorAll('.modal-overlay.open').forEach(modal => {
-                    modal.classList.remove('open');
-                });
-                document.body.style.overflow = 'auto';
-            }
-        });
 
         // Animaciones de revelado en scroll
         document.addEventListener('DOMContentLoaded', () => {
