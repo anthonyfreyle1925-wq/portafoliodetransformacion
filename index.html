@@ -8,36 +8,31 @@
     <!-- Tipografías: Space Grotesk (títulos) y Archivo (cuerpo) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     
     <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* =========================================
-           VARIABLES Y CONFIGURACIÓN (Opción 3: Brutalismo)
+           VARIABLES Y CONFIGURACIÓN (Brutalismo Expandido)
            ========================================= */
         :root {
-            --bg-color: #F9FAFB; /* Blanco hueso / crema claro */
+            --bg-color: #F9FAFB;
             --text-color: #000000;
-            --accent-color: #000000;
             --grid-line: 2px solid #000000;
             --font-display: 'Space Grotesk', sans-serif;
             --font-body: 'Archivo', sans-serif;
             --transition: all 0.2s ease-out;
         }
 
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: var(--font-body);
-            line-height: 1.5;
+            line-height: 1.6;
             overflow-x: hidden;
             border-left: var(--grid-line);
             border-right: var(--grid-line);
@@ -45,18 +40,15 @@
             margin: 0 auto;
         }
 
-        h1, h2, h3, h4 { 
+        h1, h2, h3, h4, .font-display { 
             font-family: var(--font-display); 
             text-transform: uppercase;
         }
         
-        a { 
-            color: var(--text-color); 
-            text-decoration: none; 
-        }
+        a { color: var(--text-color); text-decoration: none; }
 
         /* =========================================
-           NAVEGACIÓN (Borde inferior brutalista)
+           NAVEGACIÓN
            ========================================= */
         nav {
             display: flex;
@@ -70,40 +62,15 @@
             z-index: 100;
         }
 
-        .nav-logo { 
-            font-weight: 700; 
-            font-size: 1.5rem; 
-            font-family: var(--font-display);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-        
-        .nav-links a { 
-            font-weight: 600;
-            font-size: 1rem;
-            position: relative;
-        }
-        
+        .nav-logo { font-weight: 700; font-size: 1.5rem; font-family: var(--font-display); }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-weight: 700; font-size: 1rem; position: relative; }
         .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: var(--text-color);
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.25s ease-out;
+            content: ''; position: absolute; width: 100%; height: 2px;
+            bottom: -4px; left: 0; background-color: var(--text-color);
+            transform: scaleX(0); transform-origin: bottom right; transition: transform 0.25s ease-out;
         }
-        
-        .nav-links a:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
+        .nav-links a:hover::after { transform: scaleX(1); transform-origin: bottom left; }
 
         /* =========================================
            HERO SECTION
@@ -124,7 +91,7 @@
         }
 
         .hero-text h1 {
-            font-size: clamp(3rem, 6vw, 6rem);
+            font-size: clamp(3rem, 5.5vw, 5.5rem);
             line-height: 0.9;
             margin-bottom: 2rem;
             letter-spacing: -2px;
@@ -133,13 +100,13 @@
         .hero-text p {
             font-size: 1.25rem;
             font-weight: 500;
-            max-width: 90%;
+            max-width: 95%;
             margin-bottom: 3rem;
         }
 
         .hero-image-container {
             position: relative;
-            background: #E5E7EB; /* Gris industrial */
+            background: #E5E7EB;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -147,19 +114,16 @@
             padding: 2rem;
         }
         
-        /* Imagen de perfil provista */
         .hero-image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border: var(--grid-line);
-            filter: grayscale(100%) contrast(1.1); /* Toque brutalista */
+            filter: grayscale(100%) contrast(1.1);
             transition: filter 0.3s ease;
         }
         
-        .hero-image-container img:hover {
-            filter: grayscale(0%);
-        }
+        .hero-image-container img:hover { filter: grayscale(0%); }
 
         .btn-brutal {
             display: inline-block;
@@ -173,6 +137,7 @@
             border: 2px solid var(--text-color);
             transition: var(--transition);
             box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+            cursor: pointer;
         }
         
         .btn-brutal:hover {
@@ -180,16 +145,8 @@
             box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
         }
         
-        .btn-outline {
-            background: transparent;
-            color: var(--text-color);
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
+        .btn-outline { background: transparent; color: var(--text-color); }
+        .hero-buttons { display: flex; gap: 1.5rem; flex-wrap: wrap; }
 
         /* =========================================
            SECCIÓN: EXPERIENCIA / PERFIL
@@ -201,9 +158,7 @@
             color: var(--bg-color);
         }
         
-        .section-header h2 {
-            font-size: 2.5rem;
-        }
+        .section-header h2 { font-size: 2.5rem; }
 
         .about-content {
             display: grid;
@@ -214,7 +169,7 @@
         .about-text-block {
             padding: 3rem;
             border-right: var(--grid-line);
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 500;
         }
         
@@ -232,86 +187,100 @@
             box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);
         }
 
-        .tags-container {
-            padding: 2rem 3rem;
-            border-bottom: var(--grid-line);
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .tag-brutal {
-            border: 2px solid var(--text-color);
-            padding: 0.5rem 1rem;
-            font-family: var(--font-display);
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
         /* =========================================
-           SECCIÓN: PROYECTOS (Grid Brutalista)
+           SECCIÓN: PROYECTOS DETALLADOS
            ========================================= */
-        .projects-grid {
+        .project-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: 350px 1fr;
+            border-bottom: var(--grid-line);
         }
 
-        .project-card {
-            border-bottom: var(--grid-line);
+        .project-title-area {
+            padding: 3rem;
             border-right: var(--grid-line);
+            background: #E5E7EB;
             display: flex;
             flex-direction: column;
-            transition: background 0.3s ease;
-        }
-        
-        /* Eliminar borde derecho en la última columna */
-        .project-card:nth-child(even) {
-            border-right: none;
+            justify-content: flex-start;
         }
 
-        .project-card:hover {
-            background: #E5E7EB;
+        .project-title-area h3 {
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+            word-break: break-word;
         }
 
-        .project-card-header {
-            padding: 2rem;
-            border-bottom: var(--grid-line);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .project-card-header h3 {
-            font-size: 2rem;
-        }
-        
         .project-icon {
-            font-size: 2rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
         }
 
-        .project-card-body {
-            padding: 2rem;
-            flex-grow: 1;
+        .project-details-area {
+            display: grid;
+            grid-template-rows: auto 1fr;
         }
-        
-        .project-card-body p {
-            font-size: 1.1rem;
+
+        .project-description {
+            padding: 3rem;
+            border-bottom: var(--grid-line);
+            font-size: 1.15rem;
             font-weight: 500;
-            margin-bottom: 2rem;
         }
 
-        .metrics-list {
+        .project-description p { margin-bottom: 1.5rem; }
+        .project-description p:last-child { margin-bottom: 0; }
+
+        .project-specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .spec-box {
+            padding: 2rem;
+            border-right: var(--grid-line);
+            border-bottom: var(--grid-line);
+        }
+        .spec-box:last-child { border-right: none; }
+
+        .spec-box h4 {
+            font-size: 0.9rem;
+            color: #4B5563;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .spec-box ul {
             list-style: none;
         }
-        
-        .metrics-list li {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1rem;
+
+        .spec-box li {
+            font-weight: 600;
+            font-size: 1.05rem;
             padding: 0.8rem 0;
             border-top: 1px solid var(--text-color);
             display: flex;
-            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+        
+        .spec-box li i { margin-top: 4px; font-size: 0.9rem; }
+
+        .tech-tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        
+        .tech-tag {
+            border: 2px solid var(--text-color);
+            padding: 0.4rem 0.8rem;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
         }
 
         /* =========================================
@@ -326,32 +295,17 @@
             color: var(--bg-color);
         }
         
-        .footer-info h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-social {
-            display: flex;
-            gap: 1.5rem;
-        }
-        
-        .footer-social a {
-            color: var(--bg-color);
-            font-size: 2rem;
-            transition: transform 0.2s ease;
-        }
-        
-        .footer-social a:hover {
-            transform: scale(1.1);
-        }
+        .footer-info h2 { font-size: 3rem; margin-bottom: 1rem; }
+        .footer-social { display: flex; gap: 1.5rem; }
+        .footer-social a { color: var(--bg-color); font-size: 2rem; transition: transform 0.2s ease; }
+        .footer-social a:hover { transform: scale(1.1); }
 
         /* =========================================
            ANIMACIONES REVELADO (Intersection Observer)
            ========================================= */
         .reveal {
             opacity: 0;
-            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Efecto cortina */
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
             transform: translateY(20px);
             transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
         }
@@ -363,13 +317,19 @@
         }
 
         /* Responsive */
+        @media (max-width: 1100px) {
+            .project-row { grid-template-columns: 1fr; }
+            .project-title-area { border-right: none; border-bottom: var(--grid-line); flex-direction: row; align-items: center; gap: 2rem; padding: 2rem; }
+            .project-title-area h3 { margin-bottom: 0; font-size: 2.5rem; }
+            .project-icon { margin-bottom: 0; }
+        }
         @media (max-width: 900px) {
             .hero, .about-content { grid-template-columns: 1fr; }
             .hero-text { border-right: none; border-bottom: var(--grid-line); }
             .about-text-block { border-right: none; border-bottom: var(--grid-line); }
-            .project-card:nth-child(odd) { border-right: none; }
             footer { flex-direction: column; align-items: flex-start; gap: 2rem; }
             .hero-text h1 { font-size: 4rem; }
+            .spec-box { border-right: none; }
         }
     </style>
 </head>
@@ -386,14 +346,13 @@
     <header class="hero">
         <div class="hero-text">
             <h1 class="reveal">SISTEMAS<br>SOBRE<br>CAOS.</h1>
-            <p class="reveal">Soy Anthony Joel Freyle Aroca. Construyo operaciones digitales inteligentes que devuelven el control, el tiempo y la agilidad a los equipos directivos.</p>
+            <p class="reveal">Soy Anthony Joel Freyle Aroca, Ingeniero en Sistemas de Calidad. Construyo operaciones digitales inteligentes que devuelven el control, el tiempo y la agilidad a los equipos directivos mediante el ecosistema Microsoft Power Platform.</p>
             <div class="hero-buttons reveal">
                 <a href="#operaciones" class="btn-brutal">Ver Plataformas</a>
                 <a href="mailto:anthony_freyle27@hotmail.com" class="btn-brutal btn-outline">Contacto</a>
             </div>
         </div>
         <div class="hero-image-container reveal">
-            <!-- Imagen de perfil -->
             <img src="image_1b23a6.png" alt="Anthony Freyle - Perfil">
         </div>
     </header>
@@ -405,21 +364,18 @@
         
         <div class="about-content">
             <div class="about-text-block reveal">
-                <p style="margin-bottom: 1.5rem;">Como <strong>Ingeniero en Sistemas de Calidad</strong>, mi enfoque radica en la transformación digital corporativa real. No me limito a configurar herramientas; diseño ecosistemas operativos robustos.</p>
+                <p style="margin-bottom: 1.5rem;">Mi enfoque radica en la transformación digital corporativa real. No me limito a configurar herramientas; diseño ecosistemas operativos robustos que estructuran el caos.</p>
                 <p>Lidero el despliegue de plataformas internas críticas exprimiendo la capacidad estructural de <strong>Microsoft Power Platform</strong> (Power Apps, Power Automate, SharePoint). Si buscas automatizar procesos complejos con máxima eficiencia, la infraestructura es la clave.</p>
+                <div class="tech-tags">
+                    <div class="tech-tag">Power Apps (Canvas & Mobile)</div>
+                    <div class="tech-tag">Power Automate</div>
+                    <div class="tech-tag">SharePoint Online</div>
+                    <div class="tech-tag">Power BI</div>
+                </div>
             </div>
             <div class="about-image-block reveal">
-                <!-- Imagen de experiencia -->
                 <img src="image_1b203b.png" alt="Experiencia Laboral">
             </div>
-        </div>
-        
-        <div class="tags-container reveal">
-            <div class="tag-brutal">Power Apps</div>
-            <div class="tag-brutal">Power Automate</div>
-            <div class="tag-brutal">SharePoint</div>
-            <div class="tag-brutal">Power BI</div>
-            <div class="tag-brutal">Arquitectura de Procesos</div>
         </div>
     </section>
 
@@ -428,57 +384,110 @@
             <h2>02. Plataformas Desplegadas</h2>
         </div>
         
-        <div class="projects-grid">
-            
-            <!-- NEXO -->
-            <div class="project-card reveal">
-                <div class="project-card-header">
-                    <h3>NEXO</h3>
-                    <i class="fa-solid fa-mobile-screen project-icon"></i>
+        <!-- PROYECTO 1: NEXO -->
+        <div class="project-row reveal">
+            <div class="project-title-area">
+                <i class="fa-solid fa-mobile-screen project-icon"></i>
+                <h3>NEXO</h3>
+                <span class="font-display" style="font-weight:700; margin-top:1rem;">App Móvil de Campo</span>
+            </div>
+            <div class="project-details-area">
+                <div class="project-description">
+                    <p>NEXO es una aplicación móvil corporativa desarrollada internamente para digitalizar y unificar la operación de campo de la red de retail farmacéutico, incluyendo planificación, ejecución, geolocalización y reportería automatizada[cite: 5, 7].</p>
+                    <p>Construida con herramientas low-code de Microsoft Power Platform, la aplicación reemplazó a un proveedor externo mediante una inversión única de $625, demostrando que la innovación de alto impacto se construye desde adentro sin depender de grandes presupuestos[cite: 5].</p>
                 </div>
-                <div class="project-card-body">
-                    <p>Aplicación móvil corporativa para digitalizar la operación de campo (retail farmacéutico): planificación, ejecución, geolocalización y reportería automatizada[cite: 6].</p>
-                    <ul class="metrics-list">
-                        <li><span>AHORRO CORPORATIVO</span> <span>$13.800 / AÑO[cite: 6]</span></li>
-                        <li><span>VOLUMEN GESTIÓN</span> <span>+1.500 / MES[cite: 6]</span></li>
-                        <li><span>TIEMPO REPORTERÍA</span> <span>-75%[cite: 6]</span></li>
-                    </ul>
+                <div class="project-specs-grid">
+                    <div class="spec-box">
+                        <h4>IMPACTO FINANCIERO Y OPERATIVO</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-arrow-trend-down"></i> Ahorro recurrente de $13.800 anuales ($1.150/mes)[cite: 5].</li>
+                            <li><i class="fa-solid fa-bolt"></i> Sostiene más de 1.500 gestiones mensuales[cite: 5].</li>
+                            <li><i class="fa-regular fa-clock"></i> Reducción de hasta un 75% en horas de reportería semanal[cite: 5].</li>
+                            <li><i class="fa-solid fa-users"></i> 50 usuarios activos distribuidos en 5 áreas clave[cite: 5].</li>
+                        </ul>
+                    </div>
+                    <div class="spec-box">
+                        <h4>ARQUITECTURA TÉCNICA</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-layer-group"></i> 82 pantallas y 47 formularios operativos[cite: 7].</li>
+                            <li><i class="fa-solid fa-location-dot"></i> Geolocalización de visitas mediante cálculo de distancia Haversine[cite: 7].</li>
+                            <li><i class="fa-solid fa-file-pdf"></i> Generación local de borradores y envíos de reportes PDF automatizados[cite: 7].</li>
+                            <li><i class="fa-solid fa-database"></i> Integración con 22 listas nativas en SharePoint Online[cite: 7].</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-
-            <!-- NEO -->
-            <div class="project-card reveal">
-                <div class="project-card-header">
-                    <h3>NEO</h3>
-                    <i class="fa-solid fa-desktop project-icon"></i>
-                </div>
-                <div class="project-card-body">
-                    <p>Sistema maestro documental de escritorio. Controla el ciclo de vida de procesos con enrutamiento de doble instancia y versionamiento automático[cite: 8].</p>
-                    <ul class="metrics-list">
-                        <li><span>ARQUITECTURA</span> <span>UI CONDICIONAL</span></li>
-                        <li><span>CONTROL VERSIONES</span> <span>ÚNICA VIGENTE[cite: 8]</span></li>
-                        <li><span>ANÁLISIS</span> <span>TABLERO EN VIVO[cite: 8]</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- CGI -->
-            <div class="project-card reveal">
-                <div class="project-card-header">
-                    <h3>C.G.I.</h3>
-                    <i class="fa-solid fa-network-wired project-icon"></i>
-                </div>
-                <div class="project-card-body">
-                    <p>Centro de Gestión Interactiva. Consolidación de requerimientos de Tesorería, Abastecimiento y Mantenimiento preventivo en puntos de venta[cite: 5].</p>
-                    <ul class="metrics-list">
-                        <li><span>MANTENIMIENTO</span> <span>CHECKLIST DINÁMICOS[cite: 5]</span></li>
-                        <li><span>RUTEO</span> <span>POR PERFIL ZONAL[cite: 5]</span></li>
-                        <li><span>CONTROL</span> <span>FINANCIERO / FACTURAS[cite: 5]</span></li>
-                    </ul>
-                </div>
-            </div>
-
         </div>
+
+        <!-- PROYECTO 2: NEO -->
+        <div class="project-row reveal">
+            <div class="project-title-area">
+                <i class="fa-solid fa-desktop project-icon"></i>
+                <h3>NEO</h3>
+                <span class="font-display" style="font-weight:700; margin-top:1rem;">Gestión Documental</span>
+            </div>
+            <div class="project-details-area">
+                <div class="project-description">
+                    <p>NEO es el sistema maestro corporativo de escritorio que ordena, controla y da trazabilidad a todo el ciclo de vida de la documentación de procesos, desde su identificación hasta su publicación como versión vigente[cite: 4, 6].</p>
+                    <p>Eliminó el caos de la aprobación informal por correo electrónico y el riesgo de convivir con múltiples versiones paralelas. Se desarrolló aprovechando el licenciamiento existente de Microsoft, operando sin costos adicionales de infraestructura[cite: 4].</p>
+                </div>
+                <div class="project-specs-grid">
+                    <div class="spec-box">
+                        <h4>CAPACIDADES FUNCIONALES</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-shield-halved"></i> Garantiza una única versión vigente por documento[cite: 4, 6].</li>
+                            <li><i class="fa-solid fa-check-double"></i> Flujo de aprobación de doble instancia (Estrategia y Líder de Área)[cite: 4, 6].</li>
+                            <li><i class="fa-solid fa-font"></i> Composición automática de nomenclatura para los archivos entregables[cite: 4].</li>
+                            <li><i class="fa-solid fa-chart-pie"></i> Tablero de control en tiempo real del avance global y estados[cite: 4].</li>
+                        </ul>
+                    </div>
+                    <div class="spec-box">
+                        <h4>INFRAESTRUCTURA TÉCNICA</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-code"></i> 5 pantallas, 9 formularios y 92 campos enlazados a SharePoint[cite: 6].</li>
+                            <li><i class="fa-solid fa-user-shield"></i> Enrutamiento automático de accesos mediante el correo corporativo[cite: 4, 6].</li>
+                            <li><i class="fa-solid fa-stamp"></i> Sellado automático de tiempos y comentarios obligatorios para rechazos[cite: 4, 6].</li>
+                            <li><i class="fa-solid fa-file-signature"></i> Visor PDF integrado para revisar documentos sin descargas[cite: 4, 6].</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROYECTO 3: C.G.I. -->
+        <div class="project-row reveal">
+            <div class="project-title-area">
+                <i class="fa-solid fa-network-wired project-icon"></i>
+                <h3>C.G.I.</h3>
+                <span class="font-display" style="font-weight:700; margin-top:1rem;">Gestión Interactiva</span>
+            </div>
+            <div class="project-details-area">
+                <div class="project-description">
+                    <p>El Centro de Gestión Interactiva (CGI) es una aplicación canvas de escritorio y tablet diseñada para consolidar los requerimientos de Tesorería, Abastecimiento y Mantenimiento de Puntos de Venta[cite: 9].</p>
+                    <p>Mediante conexiones directas a listas de SharePoint, la plataforma unifica el reporte diario de ventas, la recepción de facturas de proveedores y el exhaustivo control de las actividades de mantenimiento físico, eliminando el ruido de múltiples canales de comunicación aislados[cite: 9].</p>
+                </div>
+                <div class="project-specs-grid">
+                    <div class="spec-box">
+                        <h4>MÓDULOS DE OPERACIÓN</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-cash-register"></i> Reportes diarios de ventas, faltantes y sobrantes por punto de venta[cite: 9].</li>
+                            <li><i class="fa-solid fa-right-left"></i> Registro y flujo de aprobación de mal desglose y cruce de transferencias[cite: 9].</li>
+                            <li><i class="fa-solid fa-file-invoice-dollar"></i> Control y validación directa de facturas de proveedores[cite: 9].</li>
+                        </ul>
+                    </div>
+                    <div class="spec-box">
+                        <h4>SISTEMA DE MANTENIMIENTO</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-list-check"></i> Checklist dinámico con más de 30 ítems evaluables (mobiliario, climatización, etc.)[cite: 9].</li>
+                            <li><i class="fa-solid fa-camera"></i> Levantamiento de evidencia fotográfica obligatoria del "antes y después"[cite: 9].</li>
+                            <li><i class="fa-solid fa-face-smile"></i> Integración de encuestas de satisfacción tras ejecutar el servicio[cite: 9].</li>
+                            <li><i class="fa-solid fa-window-maximize"></i> 8 pantallas y 7 formularios operativos estructurados[cite: 9].</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <footer>
