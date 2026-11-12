@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthony Joel Freyle Aroca | Portafolio</title>
+    <!-- Tipografías: JetBrains Mono para código/titulares, Plus Jakarta Sans para lectura -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* =========================================
+           VARIABLES Y CONFIGURACIÓN BASE
+           ========================================= */
+        :root {
+            --bg-dark: #0F1115;
+            --surface: #1A1D24;
+            --surface-hover: #252932;
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --accent: #7C3AED; /* Morado Power Apps */
+            --accent-glow: rgba(124, 58, 237, 0.3);
+            --border: #2D313A;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .mono { font-family: var(--font-mono); }
+        
+        a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+        a:hover { color: #9D64FF; }
+
+        /* =========================================
+           NAVEGACIÓN
+           ========================================= */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            border-bottom: 1px solid var(--border);
+            background: rgba(15, 17, 21, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo { font-weight: 700; font-size: 1.2rem; letter-spacing: -0.5px; }
+        .nav-links a { margin-left: 2rem; color: var(--text-main); font-size: 0.9rem; font-weight: 500;}
+        .nav-links a:hover { color: var(--accent); }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 5%;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%; left: -10%;
+            width: 400px; height: 400px;
+            background: var(--accent);
+            filter: blur(150px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            max-width: 900px;
+        }
+
+        .hero h1 span { color: var(--accent); }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+        .btn:hover { background: #6D28D9; transform: translateY(-2px); color: #fff;}
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            box-shadow: none;
+            color: var(--text-main);
+        }
+        .btn-outline:hover { background: var(--surface); border-color: var(--text-muted); }
+
+        .hero-buttons { display: flex; gap: 1rem; }
+
+        /* =========================================
+           SECCIÓN: SOBRE MÍ
+           ========================================= */
+        section { padding: 6rem 5%; }
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .section-title::after {
+            content: '';
+            height: 1px;
+            flex-grow: 1;
+            background: var(--border);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p { margin-bottom: 1.5rem; color: var(--text-muted); }
+        .about-text strong { color: var(--text-main); }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+        .tech-tag {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
+
+        /* =========================================
+           SECCIÓN: PROYECTOS (Grid)
+           ========================================= */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-title { font-size: 1.5rem; }
+        .project-icon { font-size: 1.8rem; color: var(--accent); }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .metrics {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--accent);
+        }
+        .metric-item {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-mono);
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        footer {
+            text-align: center;
+            padding: 4rem 5%;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+        .social-links { margin-bottom: 1.5rem; }
+        .social-links a {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin: 0 1rem;
+        }
+        .social-links a:hover { color: var(--accent); }
+
+        /* =========================================
+           ANIMACIONES (View Transitions simuladas)
+           ========================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo mono">&lt;Anthony_Freyle /&gt;</div>
+        <div class="nav-links">
+            <a href="#about">Perfil</a>
+            <a href="#projects">Operaciones</a>
+            <a href="#contact">Contacto</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1 class="reveal">El caos operativo es el <span>enemigo del crecimiento</span>.</h1>
+        <p class="reveal">Mi misión es transformarlo en ecosistemas digitales precisos, automatizados y escalables. Devuelvo el control, el tiempo y la agilidad a los equipos de alto nivel.</p>
+        <div class="hero-buttons reveal">
+            <a href="#projects" class="btn"><i class="fa-solid fa-code-branch"></i> Ver Ecosistemas</a>
+            <a href="mailto:anthony_freyle27@hotmail.com" class="btn btn-outline"><i class="fa-regular fa-envelope"></i> Conectar ahora</a>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2 class="section-title reveal">01. Arquitectura Profesional</h2>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <p>Soy un <strong>Ingeniero en Sistemas de Calidad</strong> enfocado en la transformación digital corporativa. No me limito a escribir código o configurar herramientas; construyo operaciones inteligentes.</p>
+                <p>Lidero el despliegue de plataformas internas críticas exprimiendo al máximo el ecosistema de <strong>Microsoft Power Platform</strong>. Si tu equipo necesita estructurar una transformación digital real y operar con la máxima eficiencia, el momento de acelerar es ahora.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Power Apps</span>
+                    <span class="tech-tag">Power Automate</span>
+                    <span class="tech-tag">SharePoint</span>
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">Optimización de Procesos</span>
+                </div>
+            </div>
+            <!-- Espacio para foto de perfil: Reemplazar el src con la ruta real de tu foto recortada -->
+            <div class="about-image reveal" style="text-align: center;">
+                <div style="width: 300px; height: 300px; border-radius: 50%; border: 2px solid var(--border); margin: 0 auto; overflow: hidden; display: flex; align-items: center; justify-content: center; background: var(--surface);">
+                   <i class="fa-solid fa-user-astronaut" style="font-size: 5rem; color: var(--border);"></i>
+                   <!-- <img src="tu-foto.jpg" alt="Anthony Freyle" style="width: 100%; height: 100%; object-fit: cover;"> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title reveal">02. Plataformas Desplegadas</h2>
+        <div class="projects-grid">
+            
+            <!-- Proyecto: NEXO -->
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <h3 class="project-title">NEXO</h3>
+                    <i class="fa-solid fa-mobile-screen project-icon"></i>
+                </div>
+                <p class="project-desc">Aplicación móvil corporativa para digitalizar la operación de campo (planificación, ejecución, geolocalización y reportería) de la red de retail farmacéutico.</p>
+                <div class="metrics">
+                    <div class="metric-item"><i class="fa-solid fa-arrow-trend-down"></i> -$13.800/año vs proveedor ext.</div>
+                    <div class="metric-item"><i class="fa-solid fa-bolt"></i> +1.500 gestiones mensuales</div>
+                    <div class="metric-item"><i class="fa-regular fa-clock"></i> -75% tiempo en reportería</div>
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Power Apps Mobile</span>
+                    <span class="tech-tag">Geolocalización</span>
+                </div>
+            </div>
+
+            <!-- Proyecto: NEO -->
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <h3 class="project-title">NEO</h3>
+                    <i class="fa-solid fa-desktop project-icon"></i>
+                </div>
+                <p class="project-desc">Sistema maestro documental de escritorio. Automatiza el ciclo de vida de procesos con enrutamiento por roles, versionamiento automático y tablero de control en tiempo real.</p>
+                <div class="metrics">
+                    <div class="metric-item"><i class="fa-solid fa-check-double"></i> Aprobación doble instancia</div>
+                    <div class="metric-item"><i class="fa-solid fa-shield-halved"></i> Única versión vigente garantizada</div>
+                    <div class="metric-item"><i class="fa-solid fa-chart-pie"></i> Tablero analítico en vivo</div>
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Power Apps Desktop</span>
+                    <span class="tech-tag">SharePoint Online</span>
+                </div>
+            </div>
+
+            <!-- Proyecto: CGI -->
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <h3 class="project-title">Centro de Gestión Interactiva</h3>
+                    <i class="fa-solid fa-network-wired project-icon"></i>
+                </div>
+                <p class="project-desc">Plataforma unificada para sucursales que consolida requerimientos de Tesorería, Abastecimiento y Mantenimiento preventivo, eliminando el ruido de correos y procesos aislados.</p>
+                <div class="metrics">
+                    <div class="metric-item"><i class="fa-solid fa-list-check"></i> Checklist dinámicos UI</div>
+                    <div class="metric-item"><i class="fa-solid fa-users-gear"></i> Enrutamiento nativo por perfil</div>
+                    <div class="metric-item"><i class="fa-solid fa-file-invoice-dollar"></i> Control facturas/novedades</div>
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Control de accesos</span>
+                    <span class="tech-tag">UI Adaptativa</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="social-links reveal">
+            <a href="https://www.linkedin.com/in/anthony-joel-freyle-aroca-1868b826a/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:anthony_freyle27@hotmail.com" aria-label="Correo"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+        <p class="mono reveal" style="color: var(--text-muted); font-size: 0.85rem;">Construido para escalar. Diseñado para liderar.</p>
+        <p class="mono reveal" style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">&copy; 2026 Anthony Joel Freyle Aroca.</p>
+    </footer>
+
+    <!-- Script para animaciones de scroll (Intersection Observer) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Solo animar la primera vez
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
+        });
+    </script>
+</body>
+</html>
