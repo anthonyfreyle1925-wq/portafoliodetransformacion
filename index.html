@@ -199,7 +199,7 @@
         }
 
         /* =========================================
-           SECCIÓN: SOBRE MÍ (Con foto real y trayectoria)
+           SECCIÓN: SOBRE MÍ (Con foto real en la nube)
            ========================================= */
         section { padding: 6rem 5%; }
         .section-title {
@@ -329,7 +329,7 @@
         }
         .photo-wrapper {
             width: 100%;
-            height: 430px;
+            height: 450px;
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid var(--border);
@@ -650,8 +650,8 @@
         <p class="reveal">Mi misión es transformar ecosistemas digitales precisos, automatizados y escalables, construyo operaciones inteligentes que devuelven el control, el tiempo y la agilidad a los equipos de alto nivel.</p>
         <div class="hero-buttons reveal">
             <a href="#projects" class="btn"><i class="fa-solid fa-code-branch"></i> Explorar Ecosistemas Interactivos</a>
-            <!-- Botón de correo optimizado -->
-            <a href="mailto:anthony_freyle27@hotmail.com" onclick="copyCleanEmail()" class="btn btn-outline"><i class="fa-regular fa-envelope"></i> Conectar ahora</a>
+            <!-- Botón de correo limpio -->
+            <button type="button" onclick="openAndCopyEmail()" class="btn btn-outline"><i class="fa-regular fa-envelope"></i> Conectar ahora</button>
         </div>
 
         <div class="hero-stats reveal">
@@ -674,7 +674,7 @@
         </div>
     </header>
 
-    <!-- SECCIÓN 01: SOBRE MÍ + FOTO PERSONAL -->
+    <!-- SECCIÓN 01: SOBRE MÍ + FOTO PERSONAL EN LA NUBE -->
     <section id="about">
         <h2 class="section-title reveal">01. Arquitectura Profesional</h2>
         <div class="about-grid">
@@ -685,7 +685,7 @@
                 <p>Mi enfoque combina la rigurosidad del gobierno de procesos con la <strong>co-construcción junto a los usuarios de negocio</strong>: convierto necesidades reales de campo, sucursales y áreas corporativas en aplicaciones de alto rendimiento y costo marginal cero en licenciamiento adicional.</p>
 
                 <div class="philosophy-pillars">
-                    <!-- Cambio 6: Eliminado el 8,8/10 -->
+                    <!-- Cambio 6: Sin el 8,8/10 -->
                     <div class="pillar-card">
                         <h4><i class="fa-solid fa-compass-drafting"></i> Co-Construcción Ágil</h4>
                         <p>Iteración continua junto a los equipos de campo para lograr altas tasas de adopción y máxima usabilidad operativa.</p>
@@ -715,7 +715,7 @@
                     </div>
                 </div>
 
-                <!-- Eliminado Power BI de las opciones de abajo -->
+                <!-- Eliminado Power BI -->
                 <div class="tech-stack">
                     <span class="tech-tag">Power Apps Canvas</span>
                     <span class="tech-tag">Power Automate</span>
@@ -726,13 +726,11 @@
                 </div>
             </div>
 
-            <!-- Fotografía Personal Real -->
+            <!-- Fotografía Personal con Enlace Público Postimages -->
             <div class="about-image-card reveal">
                 <div class="photo-wrapper">
-                    <!-- Si subes tu foto a Postimages.org, pega el enlace directo en src="..." -->
-                    <img src="WhatsApp Image 2026-11-12 at 16.31.07_2.jpeg" 
-                         onerror="this.onerror=null; this.src='WhatsApp Image 2026-11-12 at 16.31.07.jpeg';" 
-                         alt="Anthony Joel Freyle Aroca">
+                    <img src="https://i.postimg.cc/D0fYXcPt/Whats-App-Image-2026-11-12-at-16-31-07.jpg" 
+                         alt="Anthony Joel Freyle Aroca - Especialista de Transformación y Automatizaciones">
                 </div>
                 <div class="photo-caption">
                     <div class="photo-caption-text">
@@ -778,7 +776,7 @@
 
                 <!-- Tab 1: Bondades e Impacto -->
                 <div id="nexo-impacto" class="card-tab-content active">
-                    <p class="project-desc">Aplicación móvil corporativa distribuida vía Power Apps Mobile que digitaliza y unificar la operación de campo de la red de retail farmacéutico: planificación semanal, ejecución de visitas, geolocalización, inspecciones SSO, StoreCheck y reportería automatizada.</p>
+                    <p class="project-desc">Aplicación móvil corporativa distribuida vía Power Apps Mobile que digitaliza y unifica la operación de campo de la red de retail farmacéutico: planificación semanal, ejecución de visitas, geolocalización, inspecciones SSO, StoreCheck y reportería automatizada.</p>
                     <div class="metrics">
                         <div class="metric-item"><i class="fa-solid fa-sack-dollar"></i> <span><strong>-$13.800/año</strong> en ahorro recurrente frente a proveedor externo (inversión única de $625).</span></div>
                         <div class="metric-item"><i class="fa-solid fa-bolt"></i> <span><strong>+1.500 gestiones/mes</strong> ejecutadas por 50 usuarios en 5 áreas operativas.</span></div>
@@ -806,7 +804,6 @@
                     </div>
                 </div>
 
-                <!-- Imagen 3: Eliminado el botón Inspeccionar Arquitectura & Power Fx -->
                 <div class="card-footer-actions">
                     <div class="tech-stack" style="margin-top: 0;">
                         <span class="tech-tag">Power Apps Mobile</span>
@@ -865,7 +862,6 @@
                     </div>
                 </div>
 
-                <!-- Imagen 3: Eliminado el botón Inspeccionar Arquitectura & Power Fx -->
                 <div class="card-footer-actions">
                     <div class="tech-stack" style="margin-top: 0;">
                         <span class="tech-tag">Power Apps Desktop</span>
@@ -924,7 +920,6 @@
                     </div>
                 </div>
 
-                <!-- Imagen 3: Eliminado el botón Inspeccionar Arquitectura & Power Fx -->
                 <div class="card-footer-actions">
                     <div class="tech-stack" style="margin-top: 0;">
                         <span class="tech-tag">UI Condicional</span>
@@ -965,7 +960,7 @@
     <footer id="contact">
         <div class="social-links reveal">
             <a href="https://www.linkedin.com/in/anthony-joel-freyle-aroca-1868b826a/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="mailto:anthony_freyle27@hotmail.com" onclick="copyCleanEmail()" aria-label="Correo"><i class="fa-solid fa-envelope"></i></a>
+            <a href="#contact" onclick="openAndCopyEmail(); return false;" aria-label="Correo"><i class="fa-solid fa-envelope"></i></a>
         </div>
         <p class="mono reveal" style="color: var(--text-muted); font-size: 0.85rem;">Construido para escalar. Diseñado para liderar.</p>
         <p class="mono reveal" style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">&copy; 2026 Anthony Joel Freyle Aroca · Guayaquil, Ecuador.</p>
@@ -973,7 +968,7 @@
 
     <!-- Notificación flotante al copiar correo -->
     <div id="email-toast" class="toast-msg">
-        <i class="fa-solid fa-check" style="color: var(--success);"></i> Correo copiado: anthony_freyle27@hotmail.com
+        <i class="fa-solid fa-check" style="color: var(--success);"></i> Correo copiado al portapapeles: anthony_freyle27@hotmail.com
     </div>
 
     <!-- Scripts de Interactividad -->
@@ -995,16 +990,17 @@
             }
         }
 
-        // Copia el correo limpio al portapapeles además de abrir el cliente de correo
-        function copyCleanEmail() {
+        // Copia el correo limpio al portapapeles e invoca mailto limpio
+        function openAndCopyEmail() {
             const cleanEmail = "anthony_freyle27@hotmail.com";
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(cleanEmail).then(() => {
                     const toast = document.getElementById('email-toast');
                     toast.classList.add('show');
-                    setTimeout(() => toast.classList.remove('show'), 3500);
+                    setTimeout(() => toast.classList.remove('show'), 4000);
                 });
             }
+            window.location.href = "mailto:" + cleanEmail;
         }
 
         // Animaciones de revelado en scroll
