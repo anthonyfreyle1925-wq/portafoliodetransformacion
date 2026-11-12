@@ -3,49 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anthony Freyle | Ingeniero de Transformación</title>
-    
-    <!-- Tipografías: Space Grotesk (títulos) y Archivo (cuerpo) -->
+    <title>Anthony Joel Freyle Aroca | Portafolio de Transformación Digital</title>
+    <!-- Tipografías: JetBrains Mono para código/titulares, Plus Jakarta Sans para lectura -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
     <style>
         /* =========================================
-           VARIABLES Y CONFIGURACIÓN (Brutalismo Expandido)
+           VARIABLES Y CONFIGURACIÓN BASE
            ========================================= */
         :root {
-            --bg-color: #F9FAFB;
-            --text-color: #000000;
-            --grid-line: 2px solid #000000;
-            --font-display: 'Space Grotesk', sans-serif;
-            --font-body: 'Archivo', sans-serif;
-            --transition: all 0.2s ease-out;
+            --bg-dark: #0F1115;
+            --surface: #1A1D24;
+            --surface-hover: #252932;
+            --surface-elevated: #20242D;
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --accent: #7C3AED; /* Morado Power Apps */
+            --accent-light: #A78BFA;
+            --accent-glow: rgba(124, 58, 237, 0.35);
+            --success: #10B981;
+            --border: #2D313A;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-sans);
             line-height: 1.6;
             overflow-x: hidden;
-            border-left: var(--grid-line);
-            border-right: var(--grid-line);
-            max-width: 1600px;
-            margin: 0 auto;
         }
 
-        h1, h2, h3, h4, .font-display { 
-            font-family: var(--font-display); 
-            text-transform: uppercase;
-        }
+        h1, h2, h3, h4, .mono { font-family: var(--font-mono); }
         
-        a { color: var(--text-color); text-decoration: none; }
+        a { color: var(--accent-light); text-decoration: none; transition: var(--transition); }
+        a:hover { color: #C4B5FD; }
+
+        /* Accesibilidad WCAG 2.2: Focus Appearance & Target Size >= 24x24px */
+        :focus-visible {
+            outline: 2px solid var(--accent-light);
+            outline-offset: 3px;
+        }
 
         /* =========================================
            NAVEGACIÓN
@@ -54,496 +61,996 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 2rem;
-            border-bottom: var(--grid-line);
-            background: var(--bg-color);
-            position: sticky;
+            padding: 1.2rem 5%;
+            border-bottom: 1px solid var(--border);
+            background: rgba(15, 17, 21, 0.9);
+            backdrop-filter: blur(12px);
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 100;
         }
 
-        .nav-logo { font-weight: 700; font-size: 1.5rem; font-family: var(--font-display); }
-        .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { font-weight: 700; font-size: 1rem; position: relative; }
-        .nav-links a::after {
-            content: ''; position: absolute; width: 100%; height: 2px;
-            bottom: -4px; left: 0; background-color: var(--text-color);
-            transform: scaleX(0); transform-origin: bottom right; transition: transform 0.25s ease-out;
+        .nav-logo { font-weight: 700; font-size: 1.15rem; letter-spacing: -0.5px; color: var(--text-main); }
+        .nav-logo span { color: var(--accent); }
+        .nav-links { display: flex; align-items: center; gap: 1.8rem; }
+        .nav-links a { 
+            color: var(--text-main); 
+            font-size: 0.9rem; 
+            font-weight: 500;
+            padding: 0.4rem 0.6rem;
+            min-height: 28px;
+            display: inline-flex;
+            align-items: center;
         }
-        .nav-links a:hover::after { transform: scaleX(1); transform-origin: bottom left; }
+        .nav-links a:hover { color: var(--accent-light); }
 
         /* =========================================
-           HERO SECTION (Con nueva imagen de retrato)
+           HERO SECTION
            ========================================= */
         .hero {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            min-height: 85vh;
-            border-bottom: var(--grid-line);
-        }
-
-        .hero-text {
-            padding: 4rem 3rem;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-right: var(--grid-line);
-        }
-
-        .hero-text h1 {
-            font-size: clamp(3rem, 5.5vw, 5.5rem);
-            line-height: 0.9;
-            margin-bottom: 2rem;
-            letter-spacing: -2px;
-        }
-
-        .hero-text p {
-            font-size: 1.25rem;
-            font-weight: 500;
-            max-width: 95%;
-            margin-bottom: 3rem;
-        }
-
-        .hero-image-container {
+            padding: 6rem 5% 4rem;
+            margin-top: 40px;
             position: relative;
-            background: #E5E7EB;
-            display: flex;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 15%; left: -10%;
+            width: 450px; height: 450px;
+            background: var(--accent);
+            filter: blur(160px);
+            opacity: 0.16;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            padding: 2.5rem;
-        }
-        
-        .hero-image-container img {
-            width: 100%;
-            max-height: 680px;
-            object-fit: cover;
-            object-position: top center; /* Prioriza tu rostro y gesto */
-            border: var(--grid-line);
-            box-shadow: 10px 10px 0px 0px rgba(0,0,0,1);
-            filter: grayscale(100%) contrast(1.08);
-            transition: all 0.35s ease;
-        }
-        
-        .hero-image-container img:hover { 
-            filter: grayscale(0%) contrast(1);
-            transform: translate(-3px, -3px);
-            box-shadow: 13px 13px 0px 0px rgba(0,0,0,1);
-        }
-
-        .btn-brutal {
-            display: inline-block;
-            background: var(--text-color);
-            color: var(--bg-color);
-            padding: 1rem 2rem;
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            border: 2px solid var(--text-color);
-            transition: var(--transition);
-            box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
-            cursor: pointer;
-        }
-        
-        .btn-brutal:hover {
-            transform: translate(2px, 2px);
-            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
-        }
-        
-        .btn-outline { background: transparent; color: var(--text-color); }
-        .hero-buttons { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-
-        /* =========================================
-           SECCIÓN: EXPERIENCIA / PERFIL
-           ========================================= */
-        .section-header {
-            padding: 2rem 3rem;
-            border-bottom: var(--grid-line);
-            background: var(--text-color);
-            color: var(--bg-color);
-        }
-        
-        .section-header h2 { font-size: 2.5rem; }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            border-bottom: var(--grid-line);
-        }
-
-        .about-text-block {
-            padding: 3rem;
-            border-right: var(--grid-line);
-            font-size: 1.15rem;
-            font-weight: 500;
-        }
-        
-        .about-image-block {
-            padding: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #E5E7EB;
-        }
-        
-        .about-image-block img {
-            max-width: 100%;
-            border: var(--grid-line);
-            box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);
-        }
-
-        /* =========================================
-           SECCIÓN: PROYECTOS DETALLADOS
-           ========================================= */
-        .project-row {
-            display: grid;
-            grid-template-columns: 350px 1fr;
-            border-bottom: var(--grid-line);
-        }
-
-        .project-title-area {
-            padding: 3rem;
-            border-right: var(--grid-line);
-            background: #E5E7EB;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-
-        .project-title-area h3 {
-            font-size: 3rem;
-            line-height: 1;
-            margin-bottom: 1rem;
-            word-break: break-word;
-        }
-
-        .project-icon {
-            font-size: 3rem;
+            gap: 0.6rem;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid rgba(124, 58, 237, 0.4);
+            color: var(--accent-light);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            padding: 0.45rem 1rem;
+            border-radius: 99px;
+            width: fit-content;
             margin-bottom: 1.5rem;
         }
 
-        .project-details-area {
-            display: grid;
-            grid-template-rows: auto 1fr;
+        .hero h1 {
+            font-size: clamp(2.4rem, 5vw, 4.4rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            max-width: 920px;
         }
 
-        .project-description {
-            padding: 3rem;
-            border-bottom: var(--grid-line);
-            font-size: 1.15rem;
-            font-weight: 500;
+        .hero h1 span { color: var(--accent); }
+
+        .hero p {
+            font-size: 1.12rem;
+            color: var(--text-muted);
+            max-width: 740px;
+            margin-bottom: 2.5rem;
         }
 
-        .project-description p { margin-bottom: 1.5rem; }
-        .project-description p:last-child { margin-bottom: 0; }
-
-        .project-specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        }
-
-        .spec-box {
-            padding: 2rem;
-            border-right: var(--grid-line);
-        }
-        .spec-box:last-child { border-right: none; }
-
-        .spec-box h4 {
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.85rem 1.8rem;
+            min-height: 44px;
+            border-radius: 6px;
+            font-family: var(--font-mono);
             font-size: 0.9rem;
-            color: #4B5563;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
-        }
-
-        .spec-box ul { list-style: none; }
-
-        .spec-box li {
-            font-weight: 600;
-            font-size: 1.02rem;
-            padding: 0.8rem 0;
-            border-top: 1px solid var(--text-color);
-            display: flex;
-            align-items: flex-start;
-            gap: 0.8rem;
-        }
-        
-        .spec-box li i { margin-top: 4px; font-size: 0.9rem; }
-
-        .tech-tags {
-            display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-        
-        .tech-tag {
-            border: 2px solid var(--text-color);
-            padding: 0.4rem 0.8rem;
-            font-family: var(--font-display);
             font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            background: var(--bg-color);
+            border: 1px solid var(--accent);
+            box-shadow: 0 4px 15px var(--accent-glow);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn:hover { background: #6D28D9; transform: translateY(-2px); color: #fff; }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            box-shadow: none;
+            color: var(--text-main);
+        }
+        .btn-outline:hover { background: var(--surface); border-color: var(--accent-light); color: #fff; }
+
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
+
+        /* Barra de KPIs globales en Hero */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            max-width: 950px;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .stat-box {
+            background: rgba(26, 29, 36, 0.7);
+            border: 1px solid var(--border);
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+        }
+        .stat-number {
+            font-family: var(--font-mono);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: block;
+        }
+        .stat-number span { color: var(--accent-light); }
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
         }
 
         /* =========================================
-           SECCIÓN: TESTIMONIOS DE ADOPCIÓN
+           SECCIÓN: SOBRE MÍ (Con foto real y trayectoria)
+           ========================================= */
+        section { padding: 6rem 5%; }
+        .section-title {
+            font-size: 1.9rem;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .section-title::after {
+            content: '';
+            height: 1px;
+            flex-grow: 1;
+            background: var(--border);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text p { margin-bottom: 1.25rem; color: var(--text-muted); font-size: 1.02rem; }
+        .about-text strong { color: var(--text-main); }
+
+        .philosophy-pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .pillar-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.2rem;
+            border-radius: 6px;
+        }
+        .pillar-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .pillar-card h4 i { color: var(--accent-light); }
+        .pillar-card p {
+            font-size: 0.85rem;
+            margin-bottom: 0;
+            color: var(--text-muted);
+        }
+
+        /* Timeline de Experiencia */
+        .timeline {
+            margin-top: 2rem;
+            border-left: 2px solid var(--border);
+            padding-left: 1.5rem;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.4rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.9rem;
+            top: 0.35rem;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 8px var(--accent-glow);
+        }
+        .timeline-role {
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+        .timeline-meta {
+            font-size: 0.82rem;
+            color: var(--accent-light);
+            margin-bottom: 0.25rem;
+        }
+        .timeline-desc {
+            font-size: 0.86rem;
+            color: var(--text-muted);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-top: 1.5rem;
+        }
+        .tech-tag {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0.4rem 0.95rem;
+            border-radius: 20px;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--accent-light);
+            transition: var(--transition);
+        }
+        .tech-tag:hover {
+            border-color: var(--accent);
+            background: rgba(124, 58, 237, 0.12);
+        }
+
+        /* Contenedor de Foto Personal */
+        .about-image-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.2rem;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+            transition: var(--transition);
+        }
+        .about-image-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 15px 40px var(--accent-glow);
+            transform: translateY(-4px);
+        }
+        .photo-wrapper {
+            width: 100%;
+            height: 430px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: #14171D;
+        }
+        .photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform 0.5s ease;
+        }
+        .about-image-card:hover .photo-wrapper img {
+            transform: scale(1.03);
+        }
+        .photo-caption {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border);
+            padding-top: 0.9rem;
+        }
+        .photo-caption-text strong {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+        .photo-caption-text span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .status-dot {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--success);
+            background: rgba(16, 185, 129, 0.1);
+            padding: 0.3rem 0.65rem;
+            border-radius: 99px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        /* =========================================
+           SECCIÓN: PROYECTOS INTERACTIVOS
+           ========================================= */
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-top: -2rem;
+            margin-bottom: 2.5rem;
+            font-size: 0.98rem;
+        }
+
+        /* Filtros superiores de proyectos */
+        .project-filters {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+        .filter-btn {
+            background: var(--surface);
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            padding: 0.55rem 1.2rem;
+            min-height: 38px;
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px var(--accent-glow);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.55);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-badge {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--accent-light);
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 0.4rem;
+        }
+
+        .project-title { font-size: 1.55rem; color: var(--text-main); }
+        .project-icon { font-size: 1.8rem; color: var(--accent); }
+
+        /* Pestañas interactivas dentro de cada tarjeta */
+        .card-tabs {
+            display: flex;
+            gap: 0.4rem;
+            border-bottom: 1px solid var(--border);
+            margin: 1rem 0 1.2rem;
+            padding-bottom: 0.5rem;
+        }
+        .card-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            padding: 0.4rem 0.75rem;
+            min-height: 32px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .card-tab-btn:hover { color: var(--text-main); background: var(--surface-hover); }
+        .card-tab-btn.active {
+            background: rgba(124, 58, 237, 0.2);
+            color: var(--accent-light);
+            font-weight: 700;
+        }
+
+        .card-tab-content {
+            display: none;
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 0.25s ease;
+        }
+        .card-tab-content.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.93rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .metrics {
+            margin-bottom: 1rem;
+            padding: 0.9rem 1rem;
+            background: var(--surface-elevated);
+            border-radius: 6px;
+            border-left: 3px solid var(--accent);
+        }
+        .metric-item {
+            font-size: 0.83rem;
+            color: var(--text-main);
+            margin-bottom: 0.55rem;
+            font-family: var(--font-mono);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+        }
+        .metric-item:last-child { margin-bottom: 0; }
+        .metric-item i { color: var(--accent-light); margin-top: 0.2rem; width: 16px; }
+
+        .card-footer-actions {
+            margin-top: auto;
+            pt: 1rem;
+            border-top: 1px solid var(--border);
+            padding-top: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .btn-inspect {
+            width: 100%;
+            background: var(--surface-hover);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 0.7rem 1rem;
+            min-height: 40px;
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            transition: var(--transition);
+        }
+        .btn-inspect:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        /* =========================================
+           MODAL DE ARQUITECTURA Y CÓDIGO POWER FX
+           ========================================= */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 12, 16, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+        .modal-overlay.open { display: flex; }
+
+        .modal-window {
+            background: var(--surface);
+            border: 1px solid var(--accent);
+            border-radius: 10px;
+            max-width: 850px;
+            width: 100%;
+            max-height: 88vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.25s ease;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.4rem 2rem;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: var(--surface);
+            z-index: 10;
+        }
+        .modal-header h3 { font-size: 1.3rem; color: var(--text-main); }
+        .modal-close {
+            background: var(--surface-hover);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-close:hover { background: var(--accent); border-color: var(--accent); }
+
+        .modal-body { padding: 2rem; }
+        .modal-body h4 {
+            font-size: 0.95rem;
+            color: var(--accent-light);
+            margin: 1.5rem 0 0.75rem;
+            text-transform: uppercase;
+        }
+        .modal-body h4:first-child { margin-top: 0; }
+        .modal-body p { color: var(--text-muted); font-size: 0.93rem; margin-bottom: 1rem; }
+
+        .code-block {
+            background: #0B0D11;
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.2rem;
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: #E5E7EB;
+            overflow-x: auto;
+            white-space: pre;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .modal-spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+        .modal-spec-item {
+            background: var(--surface-elevated);
+            border: 1px solid var(--border);
+            padding: 0.8rem;
+            border-radius: 6px;
+        }
+        .modal-spec-item span {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+        .modal-spec-item strong {
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        /* =========================================
+           SECCIÓN: TESTIMONIOS
            ========================================= */
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            border-bottom: var(--grid-line);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
-
         .testimonial-card {
-            padding: 2.5rem;
-            border-right: var(--grid-line);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.8rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
-        .testimonial-card:last-child { border-right: none; }
-
         .testimonial-quote {
-            font-size: 1.1rem;
+            color: var(--text-muted);
             font-style: italic;
-            margin-bottom: 2rem;
-            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
         }
-
-        .testimonial-author {
-            border-top: 2px solid var(--text-color);
-            padding-top: 1rem;
-        }
-
         .testimonial-author strong {
             display: block;
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            text-transform: uppercase;
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            color: var(--text-main);
         }
-
         .testimonial-author span {
-            font-size: 0.9rem;
-            color: #4B5563;
-            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--accent-light);
         }
 
         /* =========================================
            FOOTER
            ========================================= */
         footer {
-            padding: 4rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            background: var(--text-color);
-            color: var(--bg-color);
+            text-align: center;
+            padding: 4rem 5%;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
         }
-        
-        .footer-info h2 { font-size: 3rem; margin-bottom: 1rem; }
-        .footer-social { display: flex; gap: 1.5rem; }
-        .footer-social a { color: var(--bg-color); font-size: 2rem; transition: transform 0.2s ease; }
-        .footer-social a:hover { transform: scale(1.1); }
+        .social-links { margin-bottom: 1.5rem; display: flex; justify-content: center; gap: 1.2rem; }
+        .social-links a {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .social-links a:hover { color: #fff; background: var(--accent); border-color: var(--accent); }
 
         /* =========================================
-           ANIMACIONES REVELADO (Intersection Observer)
+           ANIMACIONES
            ========================================= */
         .reveal {
             opacity: 0;
-            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+            transform: translateY(25px);
+            transition: all 0.7s cubic-bezier(0.5, 0, 0, 1);
         }
-        
         .reveal.active {
             opacity: 1;
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             transform: translateY(0);
         }
 
         /* Responsive */
-        @media (max-width: 1100px) {
-            .project-row { grid-template-columns: 1fr; }
-            .project-title-area { border-right: none; border-bottom: var(--grid-line); flex-direction: row; align-items: center; gap: 2rem; padding: 2rem; }
-            .project-title-area h3 { margin-bottom: 0; font-size: 2.5rem; }
-            .project-icon { margin-bottom: 0; }
-        }
         @media (max-width: 900px) {
-            .hero, .about-content, .testimonials-grid { grid-template-columns: 1fr; }
-            .hero-text, .about-text-block, .testimonial-card { border-right: none; border-bottom: var(--grid-line); }
-            footer { flex-direction: column; align-items: flex-start; gap: 2rem; }
-            .hero-text h1 { font-size: 4rem; }
-            .spec-box { border-right: none; border-bottom: var(--grid-line); }
+            .about-grid { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; }
+            .hero h1 { font-size: 2.2rem; }
+            .projects-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="nav-logo">A_FREYLE</div>
+        <div class="nav-logo mono">&lt;Anthony_Freyle <span>/&gt;</span></div>
         <div class="nav-links">
-            <a href="#perfil">EXPERIENCIA</a>
-            <a href="#operaciones">PLATAFORMAS</a>
-            <a href="#impacto">IMPACTO</a>
+            <a href="#about">Perfil</a>
+            <a href="#projects">Operaciones</a>
+            <a href="#impacto">Impacto</a>
+            <a href="#contact">Contacto</a>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="hero-text">
-            <h1 class="reveal">SISTEMAS<br>SOBRE<br>CAOS.</h1>
-            <p class="reveal">Soy Anthony Joel Freyle Aroca, Ingeniero en Sistemas de Calidad. Construyo operaciones digitales inteligentes que devuelven el control, el tiempo y la agilidad a los equipos de alto nivel mediante el ecosistema Microsoft Power Platform.</p>
-            <div class="hero-buttons reveal">
-                <a href="#operaciones" class="btn-brutal">Ver Ecosistemas</a>
-                <a href="mailto:anthony_freyle27@hotmail.com" class="btn-brutal btn-outline">Conectar Ahora</a>
-            </div>
+        <div class="hero-badge reveal">
+            <i class="fa-solid fa-bolt"></i> INGENIERÍA DE SISTEMAS DE CALIDAD & TRANSFORMACIÓN DIGITAL
         </div>
-        <div class="hero-image-container reveal">
-            <!-- Nueva fotografía personal integrada -->
-            <img src="WhatsApp Image 2026-11-12 at 16.31.07.jpeg" alt="Anthony Joel Freyle Aroca">
+        <h1 class="reveal">El caos operativo es el <span>enemigo del crecimiento</span>.</h1>
+        <p class="reveal">Mi misión es simple: transformarlo en ecosistemas digitales precisos, automatizados y escalables. No me limito a escribir código o configurar herramientas; construyo operaciones inteligentes que devuelven el control, el tiempo y la agilidad a los equipos de alto nivel.</p>
+        <div class="hero-buttons reveal">
+            <a href="#projects" class="btn"><i class="fa-solid fa-code-branch"></i> Explorar Ecosistemas Interactivos</a>
+            <a href="mailto:anthony_freyle27@hotmail.com" class="btn btn-outline"><i class="fa-regular fa-envelope"></i> Conectar ahora</a>
+        </div>
+
+        <div class="hero-stats reveal">
+            <div class="stat-box">
+                <span class="stat-number"><span>$</span>13.800</span>
+                <span class="stat-label">Ahorro anual recurrente (NEXO)</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number"><span>+</span>1.500</span>
+                <span class="stat-label">Gestiones mensuales en campo</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number"><span>-</span>75%</span>
+                <span class="stat-label">Tiempo operativo de reportería</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number"><span>3</span> Apps</span>
+                <span class="stat-label">Ecosistemas críticos en producción</span>
+            </div>
         </div>
     </header>
 
-    <section id="perfil">
-        <div class="section-header reveal">
-            <h2>01. Arquitectura Profesional</h2>
-        </div>
-        
-        <div class="about-content">
-            <div class="about-text-block reveal">
-                <p style="margin-bottom: 1.5rem;">El caos operativo es el enemigo del crecimiento. Mi misión es simple: transformarlo en ecosistemas digitales precisos, automatizados y escalables.</p>
-                <p>No me limito a escribir código o configurar herramientas; lidero el despliegue de plataformas internas críticas exprimiendo al máximo la capacidad estructural de <strong>Microsoft Power Platform</strong> (Power Apps, Power Automate, SharePoint Online y Power BI). Si tu equipo necesita estructurar una transformación digital real, el momento de acelerar es ahora.</p>
-                <div class="tech-tags">
-                    <div class="tech-tag">Power Apps (Canvas & Mobile)</div>
-                    <div class="tech-tag">Power Automate</div>
-                    <div class="tech-tag">SharePoint Online</div>
-                    <div class="tech-tag">Power Fx</div>
-                    <div class="tech-tag">Ingeniería de Calidad</div>
+    <!-- SECCIÓN 01: SOBRE MÍ + FOTO PERSONAL -->
+    <section id="about">
+        <h2 class="section-title reveal">01. Arquitectura Profesional</h2>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <p>Soy <strong>Anthony Joel Freyle Aroca</strong>, <strong>Ingeniero en Sistemas de Calidad</strong> graduado en la <strong>Universidad de Guayaquil</strong> y especialista en transformación digital corporativa desde Guayaquil, Ecuador.</p>
+                <p>Actualmente me desempeño como <strong>Ingeniero de Procesos y Transformación</strong> en <strong>Corporación Farmacéutica FC (FARMCORP)</strong>, liderando el diseño, desarrollo e implementación in-house de plataformas críticas sobre el ecosistema <strong>Microsoft Power Platform</strong> (Power Apps Canvas, Power Automate, SharePoint Online y Power Fx).</p>
+                <p>Mi enfoque combina la rigurosidad del gobierno de procesos con la <strong>co-construcción junto a los usuarios de negocio</strong>: convierto necesidades reales de campo, sucursales y áreas corporativas en aplicaciones de alto rendimiento y costo marginal cero en licenciamiento adicional.</p>
+
+                <div class="philosophy-pillars">
+                    <div class="pillar-card">
+                        <h4><i class="fa-solid fa-Compass-drafting"></i> Co-Construcción Ágil</h4>
+                        <p>Iteración continua junto a los equipos de campo para lograr adopciones superiores al 8,8/10 en usabilidad.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <h4><i class="fa-solid fa-shield-halved"></i> Gobierno en Código</h4>
+                        <p>Reglas de negocio, aprobaciones de doble instancia y enrutamiento seguro por rol programados de forma nativa.</p>
+                    </div>
+                </div>
+
+                <!-- Trayectoria -->
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-role">Ingeniero de Procesos y Transformación</div>
+                        <div class="timeline-meta">Corporación Farmacéutica FC · Sept. 2025 – Actualidad</div>
+                        <div class="timeline-desc">Arquitectura, desarrollo y documentación técnico-funcional de los ecosistemas corporativos NEXO, NEO y Centro de Gestión Interactiva.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-role">Asistente de Procesos y Mejora Continua</div>
+                        <div class="timeline-meta">Corporación Farmacéutica FC · Ene. 2025 – Sept. 2025</div>
+                        <div class="timeline-desc">Automatización de flujos operativos con Microsoft Power Automate, estandarización documental y optimización de tiempos de respuesta.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-role">Ingeniería en Sistemas de Calidad</div>
+                        <div class="timeline-meta">Universidad de Guayaquil · 2017 – 2022</div>
+                        <div class="timeline-desc">Formación en gestión por procesos, auditoría de calidad, mejora continua y diseño de sistemas organizacionales.</div>
+                    </div>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech-tag">Power Apps Canvas</span>
+                    <span class="tech-tag">Power Automate</span>
+                    <span class="tech-tag">SharePoint Online</span>
+                    <span class="tech-tag">Fórmulas Power Fx</span>
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">Gobierno de Procesos</span>
+                    <span class="tech-tag">Arquitectura Low-Code</span>
                 </div>
             </div>
-            <div class="about-image-block reveal">
-                <img src="image_1b203b.png" alt="Trayectoria y Experiencia en LinkedIn">
+
+            <!-- Fotografía Personal Real -->
+            <div class="about-image-card reveal">
+                <div class="photo-wrapper">
+                    <img src="WhatsApp Image 2026-11-12 at 16.31.07_2.jpeg" alt="Anthony Joel Freyle Aroca - Ingeniero de Transformación Digital">
+                </div>
+                <div class="photo-caption">
+                    <div class="photo-caption-text">
+                        <strong>Anthony Joel Freyle Aroca</strong>
+                        <span>Guayaquil, Ecuador · FARMCORP</span>
+                    </div>
+                    <span class="status-dot"><i class="fa-solid fa-circle" style="font-size: 0.5rem;"></i> Activo</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="operaciones">
-        <div class="section-header reveal">
-            <h2>02. Plataformas Desplegadas</h2>
-        </div>
-        
-        <!-- PROYECTO 1: NEXO -->
-        <div class="project-row reveal">
-            <div class="project-title-area">
-                <i class="fa-solid fa-mobile-screen project-icon"></i>
-                <h3>NEXO</h3>
-                <span class="font-display" style="font-weight:700; margin-top:1rem;">App Móvil de Campo</span>
-            </div>
-            <div class="project-details-area">
-                <div class="project-description">
-                    <p>NEXO es una aplicación móvil corporativa desarrollada internamente para digitalizar y unificar la operación de campo de la red de retail farmacéutico: planificación semanal, ejecución de visitas, geolocalización, inspecciones SSO, StoreCheck y reportería automatizada.</p>
-                    <p>Reemplazó a un proveedor externo con una inversión única de $625 y ha evolucionado a lo largo de 4 versiones en 18 meses co-construidas con los usuarios de negocio, alcanzando una calificación de facilidad de uso de 8,8/10.</p>
-                </div>
-                <div class="project-specs-grid">
-                    <div class="spec-box">
-                        <h4>IMPACTO FINANCIERO Y OPERATIVO</h4>
-                        <ul>
-                            <li><i class="fa-solid fa-arrow-trend-down"></i> Ahorro recurrente de $13.800 anuales ($1.150 mensuales).</li>
-                            <li><i class="fa-solid fa-bolt"></i> Sostiene más de 1.500 gestiones mensuales en vivo.</li>
-                            <li><i class="fa-regular fa-clock"></i> Reducción de hasta un 75% en horas de reportería.</li>
-                            <li><i class="fa-solid fa-users"></i> 50 usuarios activos distribuidos en 5 áreas operativas.</li>
-                        </ul>
-                    </div>
-                    <div class="spec-box">
-                        <h4>ARQUITECTURA TÉCNICA</h4>
-                        <ul>
-                            <li><i class="fa-solid fa-layer-group"></i> Paquete de 82 pantallas con enrutamiento dinámico por área y cargo.</li>
-                            <li><i class="fa-solid fa-location-dot"></i> Validación geográfica en sitio mediante fórmula Haversine (umbral de 500 m).</li>
-                            <li><i class="fa-solid fa-file-pdf"></i> Generación de PDF en Base64 y modo offline con guardado de borradores locales (SaveData).</li>
-                            <li><i class="fa-solid fa-database"></i> Múltiples listas en SharePoint Online y flujos en Power Automate.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <!-- SECCIÓN 02: PROYECTOS INTERACTIVOS -->
+    <section id="projects">
+        <h2 class="section-title reveal">02. Plataformas Desplegadas</h2>
+        <p class="section-subtitle reveal">Explora las pestañas de cada proyecto para conocer sus bondades operativas, arquitectura e impacto, o inspecciona las fórmulas técnicas implementadas.</p>
+
+        <!-- Filtros de categoría -->
+        <div class="project-filters reveal" role="tablist" aria-label="Filtrar proyectos">
+            <button class="filter-btn active" onclick="filterProjects('all', this)">Todos los Ecosistemas (3)</button>
+            <button class="filter-btn" onclick="filterProjects('mobile', this)">Operación Móvil de Campo</button>
+            <button class="filter-btn" onclick="filterProjects('desktop', this)">Gobierno Documental & Sucursales</button>
         </div>
 
-        <!-- PROYECTO 2: NEO -->
-        <div class="project-row reveal">
-            <div class="project-title-area">
-                <i class="fa-solid fa-desktop project-icon"></i>
-                <h3>NEO</h3>
-                <span class="font-display" style="font-weight:700; margin-top:1rem;">Gestión Documental</span>
-            </div>
-            <div class="project-details-area">
-                <div class="project-description">
-                    <p>NEO es el sistema maestro corporativo de escritorio y tablet (1366 × 680 px) que ordena, controla y da trazabilidad a todo el ciclo de vida de la documentación de procesos: desde que un documento se identifica como necesario hasta que queda publicado en NEO+ como versión vigente.</p>
-                    <p>Las reglas de gobierno están programadas directamente en la herramienta, operando con costo marginal cero al aprovechar el licenciamiento existente de Microsoft Power Apps y SharePoint Online.</p>
-                </div>
-                <div class="project-specs-grid">
-                    <div class="spec-box">
-                        <h4>GOBIERNO Y FLUJO FUNCIONAL</h4>
-                        <ul>
-                            <li><i class="fa-solid fa-shield-halved"></i> Garantiza una única versión vigente marcando automáticamente como obsoletas las anteriores.</li>
-                            <li><i class="fa-solid fa-check-double"></i> Aprobación de doble instancia (Jefe E&T y Líder de Área) con sellos de tiempo y comentarios obligatorios.</li>
-                            <li><i class="fa-solid fa-font"></i> Composición automática de nomenclatura («Código Proceso + v0N + Tarea»).</li>
-                            <li><i class="fa-solid fa-gauge-high"></i> Tablero con velocímetro en vivo e indicadores coherentes con los filtros activos.</li>
-                        </ul>
+        <div class="projects-grid">
+            
+            <!-- =====================================
+                 PROYECTO 1: NEXO
+                 ===================================== -->
+            <div class="project-card reveal" data-category="mobile">
+                <div class="project-header">
+                    <div>
+                        <span class="project-badge">APP MÓVIL · 640 × 1136 PX</span>
+                        <h3 class="project-title">NEXO</h3>
                     </div>
-                    <div class="spec-box">
-                        <h4>INFRAESTRUCTURA TÉCNICA</h4>
-                        <ul>
-                            <li><i class="fa-solid fa-code"></i> 5 pantallas, 9 formularios, 7 galerías, 92 tarjetas de datos y 417 controles de texto.</li>
-                            <li><i class="fa-solid fa-user-shield"></i> Enrutamiento automático sin menús intermedios para 4 perfiles mediante correo corporativo.</li>
-                            <li><i class="fa-solid fa-trash-can-arrow-up"></i> Eliminación lógica (no física) y bloqueo de edición según el estado del ciclo de vida.</li>
-                            <li><i class="fa-solid fa-file-pdf"></i> 2 visores PDF integrados para revisar entregables sin descargar archivos.</li>
-                        </ul>
-                    </div>
+                    <i class="fa-solid fa-mobile-screen-button project-icon"></i>
                 </div>
-            </div>
-        </div>
 
-        <!-- PROYECTO 3: C.G.I. -->
-        <div class="project-row reveal">
-            <div class="project-title-area">
-                <i class="fa-solid fa-network-wired project-icon"></i>
-                <h3>C.G.I.</h3>
-                <span class="font-display" style="font-weight:700; margin-top:1rem;">Gestión Interactiva</span>
-            </div>
-            <div class="project-details-area">
-                <div class="project-description">
-                    <p>El Centro de Gestión Interactiva (CGI) es una aplicación canvas de escritorio y tablet diseñada para unificar la operación diaria de los puntos de venta, consolidando requerimientos de Tesorería, Abastecimiento y Mantenimiento Preventivo en una sola interfaz.</p>
-                    <p>Opera mediante persistencia directa contra 9 listas distribuidas en 3 sitios de SharePoint Online (Tesorería, NEXO y Abastecimiento) sin depender de flujos intermedios, garantizando inmediatez transaccional.</p>
+                <!-- Pestañas Internas -->
+                <div class="card-tabs">
+                    <button class="card-tab-btn active" onclick="switchTab(this, 'nexo-impacto')">Bondades e Impacto</button>
+                    <button class="card-tab-btn" onclick="switchTab(this, 'nexo-arq')">Arquitectura</button>
+                    <button class="card-tab-btn" onclick="switchTab(this, 'nexo-flujos')">Lógica & Flujos</button>
                 </div>
-                <div class="project-specs-grid">
-                    <div class="spec-box">
-                        <h4>TESORERÍA Y ABASTECIMIENTO</h4>
-                        <ul>
-                            <li><i class="fa-solid fa-cash-register"></i> Resumen mensual automatizado y registro diario de ventas, depósitos, faltantes y sobrantes.</li>
-                            <li><i class="fa-solid fa-right-left"></i> Flujo de reporte y aprobación zonal de novedades por mal desglose o cruce de transferencias.</li>
-                            <li><i class="fa-solid fa-file-invoice-dollar"></i> Recepción y validación de facturas de proveedores en PDV y bodega central.</li>
-                            <li><i class="fa-solid fa-lock"></i> Enrutamiento de seguridad para 4 grupos de acceso con pantalla de bloqueo restringido.</li>
-                        </ul>
-                    </div>
-                    <div class="spec-box">
-                        <h4>MANTENIMIENTO PREVENTIVO E INTERFAZ</h4>
-                        <ul>
-                            <li><i class="fa-solid fa-list-check"></i> Checklist dinámico de ~30 ítems en 5 categorías (pintura, rótulos, mobiliario, eléctrico, climatización).</li>
-                            <li><i class="fa-solid fa-camera"></i> Registro de 4 pares de evidencia fotográfica (antes y después) y encuesta de satisfacción.</li>
-                            <li><i class="fa-solid fa-sliders"></i> 8 pantallas, 7 formularios, 160 tarjetas de datos y 90 interruptores (Toggles) controlados por contexto.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
 
+                <!-- Tab 1: Bondades e Impacto -->
+                <div id="nexo-impacto" class="card-tab-content active">
+                    <p class="project-desc">Aplicación móvil corporativa distribuida vía Power Apps Mobile que digitaliza y unifica la operación de campo de la red de retail farmacéutico: planificación semanal, ejecución de visitas, geolocalización, inspecciones SSO, StoreCheck y reportería automatizada.</p>
+                    <div class="metrics">
+                        <div class="metric-item"><i class="fa-solid fa-sack-dollar"></i> <span><strong>-$13.800/año</strong> en ahorro recurrente frente a proveedor externo (inversión única de $625).</span></div>
+                        <div class="metric-item"><i class="fa-solid fa-bolt"></i> <span><strong>+1.500 gestiones/mes</strong> ejecutadas por 50 usuarios en 5 áreas operativas.</span></div>
+                        <div class="metric-item"><i class="fa-regular fa-clock"></i> <span><strong>-75% tiempo</strong> invertido en consolidación de reportería y calificación 8,8/10 en usabilidad.</span></div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Arquitectura -->
+                <div id="nexo-arq" class="card-tab-content">
+                    <p class="project-desc">Paquete <code>NEXO_FFC.msapp</code> co-construido en 4 versiones junto a los equipos de Comercial, Auditoría, Marketing, Mantenimiento y Mercaderistas SERES.</p>
+                    <div class="metrics">
+                        <div class="metric-item"><i class="fa-solid fa-layer-group"></i> <span><strong>82 pantallas</strong> y 47 formularios con enrutamiento dinámico según cargo y área.</span></div>
+                        <div class="metric-item"><i class="fa-solid fa-database"></i> <span>Conectado a múltiples listas en 3 sitios SharePoint (<code>/NEXO</code>, <code>/FCSERVICES</code>, <code>/ICM_Farmcorp</code>).</span></div>
+                        <div class="metric-item"><i class="fa-solid fa-wifi"></i> <span><strong>Modo Offline:</strong> Repositorio local de borradores con <code>SaveData('ColFormularioParaCargar')</code>.</span></div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Lógica & Flujos -->
+                <div id="nexo-flujos" class="card-tab-content">
+                    <p class="project-desc">Automatización de reglas operativas en tiempo real para garantizar el cumplimiento en punto de venta:</p>
+                    <div class="metrics">
+                        <div class="metric-item"><i class="fa-solid fa-location-crosshairs"></i> <span><strong>Geolocalización Haversine:</strong> Verifica si la visita se ejecuta dentro del umbral de 500 m del PDV.</span></div>
+                        <div class="metric-item"><i class="fa-solid fa-calendar-check"></i> <span><strong>Ventana de Planificación:</strong> Bloqueo automático fuera de viernes a domingo (redirige a Emergente).</span></div>
+                        <div class="metric-item"><i class="fa-solid fa-file-pdf"></i> <span><strong>Motor PDF Base64:</strong> Captura con <code>PDF({ExpandContainers:true})</code> y envío por Power Automate.</span></div>
+                    </div>
+                </div>
+
+                <div class="card-footer-actions">
+                    <button class="btn-inspect" onclick="openModal('modal-nexo')">
+                        <i class="fa-solid fa-terminal"></i> Inspeccionar Arquitectura & Power Fx
+                    </button>
+                    <div class="tech-stack" style="margin-top: 0;">
+                        <span class="tech-tag">Power Apps Mobile</span>
+                        <span class="tech-tag">Haversine GPS</span>
+                        <span class="tech-tag">Power Automate</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =====================================
+                 PROYECTO 2: NEO
+                 ===================================== -->
+            <div class="project-card reveal" data-category="desktop">
+                <div class="project-header">
+                    <div>
+                        <span class="project-badge">DESKTOP / TABLET · 1366 × 680 PX</span>
+                        <h3 class="project-title">NEO</h3>
+                    </div>
+                    <i class="fa-solid fa-desktop project-icon"></i>
+                </div>
+
+                <!-- Pestañas Internas -->
+                <div class="card-tabs">
+                    <button class="card-tab-btn active" onclick="switchTab(this, 'neo-impacto')">Bondades e Impacto</button>
+                    <button class="card-tab-btn" onclick="switchTab(this, 'neo-arq')">Arquitectura</button>
+                    <button class="card-tab-btn" onclick="switchTab(this, 'neo-flujos')">Gobierno & Flujos</button>
+                </div>
+
+                <!-- Tab 1: Bondades e Impacto -->
+                <div id="neo-impacto" class="card-tab-content active">
+                    <p class="project-desc">Sistema maestro documental corporativo que ordena, controla y da trazabilidad al ciclo de vida completo de los procesos de FARMCORP, desde su identificación hasta su publicación en el portal NEO+.</p>
+                    <div class="metrics">
+                        <div class="metric-item"><i class="fa-solid fa-shield-halved"></i> <span><strong>Única versión vigente:</strong> Elimina versiones paralelas marcando como <code>OBSOLETO</code> el historial previo.</span></div>
+                        <div class="metric-item"><i class="fa-solid fa-check-double"></i> <span><strong>Doble instancia de aprobación:</strong> Secuencia obligatoria entre Jefatura E&T y Líder de Área.</span></div>
+                        <div class="metric-item"><i class="fa-solid fa-coins"></i> <span><strong>Costo marginal $0:</strong> Desarrollado íntegramente sobre el licenciamiento M365 existente.</span></div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Arquitectura -->
+                <div id="neo-arq" class="card-tab-content">
+                    <p class="project-desc">Diseñado en relación horizontal con escalado automático para mostrar en simultáneo el maestro de procesos, indicadores y detalle documental.</p>
+                    <div class="metrics">
+                        <div class="metric-item"><i class="fa-solid fa-cubes"></i> <span><strong>5 pantallas, 9 formularios,</strong> 7 galerías, 92 tarjetas de datos y <strong>417 controles de texto</strong>.</span></div>
+                        <div class="metric-item"><i class="fa-solid fa-file-pdf"></i> <span><strong>2 Visores PDF integrados</strong> que permiten auditar entregables en ventana modal sin descargarlos.</span></div>
+                        <div class="metric-item"><i class="fa-solid fa-building"></i> <span>Soporte multi-unidad: conmuta entre <strong>Retail Farmacéutico, Seres y Wuolla</strong>.</span></div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Gobierno & Flujos -->
+                <div id="neo-flujos" class="card-tab-content">
+                    <p class="project-desc">Reglas de gobierno documental programadas directamente en la interfaz sin depender de aprobaciones informales por correo:</p>
+                    <div class="metrics">
+                        <div class="metric-item"><i class="fa-solid fa-gauge-high"></i> <span><strong>Velocímetro dinámico:</strong> Calcula el % de avance global y rota la aguja de 0° a 180° en vivo.</span></div>
+                        <div class="metric-item"><i class="fa-solid fa-clock-rotate-left"></i> <span><strong>Control de cambio de fechas:</strong> Audita replanificaciones en lista separada y marca estado <code>⚠️ Con novedad</code>.</span></div>
+                        <div class="metric-item"><i class="fa-solid fa-ban"></i> <span><strong>Eliminación lógica:</strong> Excluye registros <code>❌ Eliminado</code> sin perder trazabilidad de auditoría.</span></div>
+                    </div>
+                </div>
+
+                <div class="card-footer-actions">
+                    <button class="btn-inspect" onclick="openModal('modal-neo')">
+                        <i class="fa-solid fa-terminal"></i> Inspeccionar Arquitectura & Power Fx
+                    </button>
+                    <div class="tech-stack" style="margin-top: 0;">
+                        <span class="tech-tag">Power Apps Desktop</span>
+                        <span class="tech-tag">SharePoint Online</span>
+                        <span class="tech-tag">Office 365 Users</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =====================================
+                 PROYECTO 3: CENTRO DE GESTIÓN INTERACTIVA (CGI)
+                 ===================================== -->
+            <div class="project-card reveal" data-category="desktop">
+                <div class="project-header">
+                    <div>
+                        <span class="project-badge">SUCURSALES / PDV · 1366 × 680 PX</span>
+                        <h3 class="project-title">Centro de Gestión Interactiva</h3>
+                    </div>
+                    <i class="fa-solid fa-network-wired project-icon"></i>
+                </div>
+
+                <!-- Pestañas Internas -->
+                <div class="card-tabs">
+                    <button class="card-tab-btn active" onclick="switchTab(this, 'cgi-impacto')">Bondades e Impacto</button>
+                    <button class="card-tab-btn" onclick="switchTab(this, 'cgi-arq')">Arquitectura</button>
+                    <button class="card-tab-btn" onclick="switchTab(this, 'cgi-flujos')">Módulos & Checklist</button>
+                </div>
+
+                <!-- Tab 1: Bondades e Impacto -->
+                <div id="cgi-impacto" class="card-tab-content active">
+                    <p class="project-desc">Plataforma unificada para puntos de venta y supervisores que consolida en una sola interfaz los procesos diarios de Tesorería, Abastecimiento y Mantenimiento Preventivo.</p>
+                    <div class="metrics">
+                        <div class="metric-item"><i class="fa-solid fa-cash-register"></i> <span><strong>Resumen Mensual en Vivo:</strong> Consolida depósitos, sobrantes, faltantes, facturas y novedades del PDV.</span></div>
+                        <div class="metric-item"><i class="fa-solid fa-bolt-lightning"></i> <span><strong>Persistencia Directa:</strong> Opera 100% con conectores nativos (<code>Patch</code>, <code>SubmitForm</code>) sin latencia de flujos intermedios.</span></div>
+                        <div class="metric-item"><i class="fa-solid fa-user-lock"></i> <span><strong>Seguridad en StartScreen:</strong> Enruta 4 perfiles operativos y bloquea accesos no autorizados.</span></div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Arquitectura -->
+                <div id="cgi-arq" class="card-tab-content">
+                    <p class="project-desc">Conecta transversalmente tres sitios corporativos de SharePoint (<code>/ASISTENTEDETESORERIA</code>, <code>/NEXO</code> y <code>/abastecimiento</code>).</p>
+                    <div class="metrics">
+                        <div class="metric-item"><i class="fa-solid fa-table-columns"></i> <span><strong>8 pantallas, 7 formularios,</strong> 160 tarjetas tipadas, 318 textos modernos y <strong>90 controles Toggle</strong>.</span></div>
+                        <div class="metric-item"><i class="fa-solid fa-code-commit"></i> <span><strong>Estado 100% Contextual:</strong> Uso intensivo de <code>UpdateContext</code> por pantalla para máxima ligereza en memoria.</span></div>
+                        <div class="metric-item"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span>Hub de lanzadores externos integrados (Extranet, Solicitud de Abastecimiento y Pre-Digitación).</span></div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Módulos & Checklist -->
+                <div id="cgi-flujos" class="card-tab-content">
+                    <p class="project-desc">Digitalización integral de la operación administrativa y física de cada farmacia:</p>
+                    <div class="metrics">
+                        <div class="metric-item"><i class="fa-solid fa-right-left"></i> <span><strong>Mal Desglose y Transferencias:</strong> 9 categorías de novedad con aprobación zonal y comentario obligatorio.</span></div>
+                        <div class="metric-item"><i class="fa-solid fa-list-check"></i> <span><strong>Checklist ~30 Ítems:</strong> 5 categorías desplegables (pintura, rótulos, mobiliario, eléctrico, climatización).</span></div>
+                        <div class="metric-item"><i class="fa-solid fa-camera"></i> <span><strong>Evidencia + Satisfacción:</strong> 4 pares de fotos (antes/después) y cierre del ciclo mediante encuesta Rating.</span></div>
+                    </div>
+                </div>
+
+                <div class="card-footer-actions">
+                    <button class="btn-inspect" onclick="openModal('modal-cgi')">
+                        <i class="fa-solid fa-terminal"></i> Inspeccionar Arquitectura & Power Fx
+                    </button>
+                    <div class="tech-stack" style="margin-top: 0;">
+                        <span class="tech-tag">UI Condicional</span>
+                        <span class="tech-tag">Multi-Site SharePoint</span>
+                        <span class="tech-tag">90 Toggles Dinámicos</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </section>
 
-    <!-- SECCIÓN 03: TESTIMONIOS -->
+    <!-- SECCIÓN 03: VOCES DE LA OPERACIÓN (Testimonios) -->
     <section id="impacto">
-        <div class="section-header reveal">
-            <h2>03. Voces de la Operación</h2>
-        </div>
+        <h2 class="section-title reveal">03. Impacto Real en la Operación</h2>
         <div class="testimonials-grid">
             <div class="testimonial-card reveal">
                 <p class="testimonial-quote">"Permite centralizar y gestionar los llamados de atención mediante un flujo de aprobaciones que garantiza un proceso más ágil, ordenado y eficiente."</p>
@@ -569,19 +1076,220 @@
         </div>
     </section>
 
-    <footer>
-        <div class="footer-info reveal">
-            <h2>LISTO PARA<br>ESCALAR.</h2>
-            <p style="font-family: var(--font-display); font-weight: 500;">&copy; 2026 Anthony Joel Freyle Aroca · Guayaquil, Ecuador.</p>
+    <!-- =========================================
+         MODALES TÉCNICOS INTERACTIVOS
+         ========================================= -->
+    
+    <!-- Modal 1: NEXO -->
+    <div id="modal-nexo" class="modal-overlay" onclick="closeModalOnBg(event, 'modal-nexo')">
+        <div class="modal-window" role="dialog" aria-labelledby="title-modal-nexo">
+            <div class="modal-header">
+                <h3 id="title-modal-nexo"><i class="fa-solid fa-mobile-screen-button" style="color:var(--accent);"></i> Ficha Técnica & Power Fx — NEXO</h3>
+                <button class="modal-close" onclick="closeModal('modal-nexo')" aria-label="Cerrar modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-spec-grid">
+                    <div class="modal-spec-item"><span>PAQUETE MSAPP</span><strong>NEXO_FFC.msapp</strong></div>
+                    <div class="modal-spec-item"><span>LAYOUT NATIVO</span><strong>640 × 1136 (Portrait)</strong></div>
+                    <div class="modal-spec-item"><span>ESCALA DE INTERFAZ</span><strong>82 Pantallas / 47 Forms</strong></div>
+                    <div class="modal-spec-item"><span>INVERSIÓN VS AHORRO</span><strong>$625 vs $13.800/año</strong></div>
+                </div>
+
+                <h4>1. Registro Inicial y Carga de Variables Globales (PT_COMPLETAR_PERFIL)</h4>
+                <p>El uso de <code>With + LookUp</code> evita repetir la consulta contra SharePoint en cada <code>Set</code>, mientras que <code>Concat</code> permite multi-asignación de regiones y zonas:</p>
+                <div class="code-block">=Notify("Gracias por completar tu registro"; NotificationType.Success);;
+Refresh('Datos de Usuarios');;
+With(
+    { MiUsuario: LookUp('Datos de Usuarios'; Correo = User().Email) };
+    Set(CARGO_APP; MiUsuario.Cargo.Value);;
+    Set(REGION_APP; Concat(MiUsuario.Region; Value; ", "));;
+    Set(ZONA_APP; Concat(MiUsuario.Zona; Value; ", "));;
+    Set(AREA_APP; MiUsuario.Área.Value)
+);;
+If(AREA_APP = "Marketing y Experiencia del Cliente";
+    Navigate(PT_INICIO_MKT_EXP; ScreenTransition.Fade);
+    Navigate(PT_INICIO_V3; ScreenTransition.Fade)
+)</div>
+
+                <h4>2. Regla de Negocio: Ventana de Planificación Semanal</h4>
+                <p>Habilita la carga de planificación exclusivamente de viernes a domingo (días >= 5 comenzando lunes) y discrimina por rol:</p>
+                <div class="code-block">=Set(Menu; false);
+If(Weekday(Now(), StartOfWeek.Monday) >= 5;
+    If(CARGO_APP = "Auditor de Inventario";
+        Navigate(PT_PLANIFICACIÓN_AUD; ScreenTransition.UnCover);;
+        NewForm(FO_PLANIFICACIÓN_AUD);
+        Navigate(PT_PLANIFICACIÓN_COM; ScreenTransition.UnCover);;
+        NewForm(FO_PLANIFICACIÓN_COM)
+    );
+    Notify("No tiene permiso para planificar hoy, genere una emergente."; NotificationType.Error)
+)</div>
+            </div>
         </div>
-        <div class="footer-social reveal">
-            <a href="https://www.linkedin.com/in/anthony-joel-freyle-aroca-1868b826a/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="mailto:anthony_freyle27@hotmail.com" aria-label="Correo"><i class="fa-solid fa-square-envelope"></i></a>
+    </div>
+
+    <!-- Modal 2: NEO -->
+    <div id="modal-neo" class="modal-overlay" onclick="closeModalOnBg(event, 'modal-neo')">
+        <div class="modal-window" role="dialog" aria-labelledby="title-modal-neo">
+            <div class="modal-header">
+                <h3 id="title-modal-neo"><i class="fa-solid fa-desktop" style="color:var(--accent);"></i> Ficha Técnica & Power Fx — NEO (MA-GET-04)</h3>
+                <button class="modal-close" onclick="closeModal('modal-neo')" aria-label="Cerrar modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-spec-grid">
+                    <div class="modal-spec-item"><span>DOCUMENTO / VERSIÓN</span><strong>DocVersion 1.349 (YAML 2.4)</strong></div>
+                    <div class="modal-spec-item"><span>LAYOUT NATIVO</span><strong>1366 × 680 (ScaleToFit)</strong></div>
+                    <div class="modal-spec-item"><span>CONTROLES TOTALES</span><strong>417 Textos / 92 DataCards</strong></div>
+                    <div class="modal-spec-item"><span>REPOSITORIO</span><strong>4 Listas SharePoint (/NEO)</strong></div>
+                </div>
+
+                <h4>1. Cálculo del Velocímetro de Avance Global (PT_USUARIO_ET)</h4>
+                <p>Calcula la proporción de documentos completados o con versión publicada (excluyendo bajas lógicas) y la transforma en un ángulo de 0° a 180°:</p>
+                <div class="code-block">=Set(Requerimiento, false); Set(Maestro, true); Set(Aprobaciones, false);
+Set(Giro_Negocio, "Retail"); Set(AdjuntaArchivo, false);
+Set(varPercentage,
+    CountIf('Gestión Documental Retail',
+        Estado.Value = "✅ Listo" Or 'Versión del documento' > 1,
+        Estado.Value <> "❌ Eliminado")
+    / CountIf('Gestión Documental Retail', Estado.Value <> "❌ Eliminado")
+);
+Set(varNeedleAngle, varPercentage * 180)</div>
+
+                <h4>2. Aprobación de Primera Instancia y Promoción a Revisión</h4>
+                <p>Promueve el documento a la bandeja del Líder de Área, registra sello de tiempo y sincroniza el estado en el Maestro Documental:</p>
+                <div class="code-block">=If(Confirm("Seguro que desea aprobar el documento"),
+    Patch('TRANSACCIONAL DE DOCUMENTOS', DocSelect,
+        { Fase: {Value: "Revisión"},
+          'Aprobación de EEC': {Value: "Aprobado"},
+          'Comentario del Jefe de E&T': TextInput1_1.Text,
+          'Fecha de Respuesta ET': Now() });
+    Patch('Gestión Documental Retail',
+        LookUp('Gestión Documental Retail', StartsWith(DocSelect.'Nombre del Documento', 'Código Proceso')),
+        { Estado: {Value: "🔍 En aprobación"} });
+    Set(VENTANA_DOCUMENTO, false);
+    Notify("SE HA APROBADO CON ÉXITO EL DOCUMENTO", NotificationType.Success)
+)</div>
+            </div>
         </div>
+    </div>
+
+    <!-- Modal 3: CGI -->
+    <div id="modal-cgi" class="modal-overlay" onclick="closeModalOnBg(event, 'modal-cgi')">
+        <div class="modal-window" role="dialog" aria-labelledby="title-modal-cgi">
+            <div class="modal-header">
+                <h3 id="title-modal-cgi"><i class="fa-solid fa-network-wired" style="color:var(--accent);"></i> Ficha Técnica & Power Fx — Centro de Gestión Interactiva</h3>
+                <button class="modal-close" onclick="closeModal('modal-cgi')" aria-label="Cerrar modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-spec-grid">
+                    <div class="modal-spec-item"><span>PAQUETE MSAPP</span><strong>CGI (1366 × 680 px)</strong></div>
+                    <div class="modal-spec-item"><span>COMPONENTES UI</span><strong>8 Pantallas / 160 DataCards</strong></div>
+                    <div class="modal-spec-item"><span>CHECKLIST INTERACTIVO</span><strong>90 Controles Toggle</strong></div>
+                    <div class="modal-spec-item"><span>PERSISTENCIA</span><strong>Directa en 3 Sitios SP</strong></div>
+                </div>
+
+                <h4>1. Enrutamiento de Seguridad en StartScreen</h4>
+                <p>Clasifica automáticamente cuentas genéricas de farmacia (prefijo <code>fc</code>), supervisores zonales, personal administrativo y bloquea accesos no autorizados:</p>
+                <div class="code-block">=If(StartsWith(User().Email, "fc"), PT_INICIO,
+    Switch(User().Email,
+        "fernando.vera@farmcorp.com.ec", PT_APROBACIÓN_MAL_DESGLOSES,
+        "lady.garcia@farmcorp.com.ec", PT_APROBACIÓN_MAL_DESGLOSES,
+        "roy.dougherty@farmcorp.com.ec", PT_APROBACIÓN_MAL_DESGLOSES,
+        "lorena.velasco@farmcorp.com.ec", PT_APROBACIÓN_MAL_DESGLOSES,
+        PT_SIN_ACCESO
+    )
+)</div>
+
+                <h4>2. Consolidación Financiera Mensual del PDV (PT_INICIO)</h4>
+                <p>Agrega en tiempo real el monto depositado, sobrantes, faltantes, facturas y novedades del mes en curso para el punto de venta autenticado:</p>
+                <div class="code-block">="RESUMEN GLOBAL DEL MES" &
+" | Cantidad: $" & Text(Coalesce(Sum(Filter(Reportes_Diarios, POS = User().FullName,
+    Fecha >= Date(Year(Today()), Month(Today()), 1)), Cantidad_Depositada), 0), "#,##0.00") &
+" | Facturas reportadas: " & CountRows(Filter('Consolidado de Facturas Proveedores',
+    Punto_Venta = User().FullName, Fecha_Factura >= Date(Year(Today()), Month(Today()), 1))) &
+" | Novedades reportadas: " & CountRows(Filter(Reporte_mal_desglose, farmacia = User().FullName,
+    StartsWith(fecha_cierre_caja, Text(Today(), "yyyy-mm"))))</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="social-links reveal">
+            <a href="https://www.linkedin.com/in/anthony-joel-freyle-aroca-1868b826a/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="mailto:anthony_freyle27@hotmail.com" aria-label="Correo"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+        <p class="mono reveal" style="color: var(--text-muted); font-size: 0.85rem;">Construido para escalar. Diseñado para liderar.</p>
+        <p class="mono reveal" style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">&copy; 2026 Anthony Joel Freyle Aroca · Guayaquil, Ecuador.</p>
     </footer>
 
-    <!-- Script para animaciones (Intersection Observer) -->
+    <!-- Scripts de Interactividad (View Transitions API + Intersection Observer) -->
     <script>
+        // Cambio de pestañas internas en cada tarjeta usando View Transitions API cuando esté disponible
+        function switchTab(button, targetId) {
+            const card = button.closest('.project-card');
+            const updateDOM = () => {
+                card.querySelectorAll('.card-tab-btn').forEach(btn => btn.classList.remove('active'));
+                card.querySelectorAll('.card-tab-content').forEach(content => content.classList.remove('active'));
+                button.classList.add('active');
+                document.getElementById(targetId).classList.add('active');
+            };
+
+            if (document.startViewTransition) {
+                document.startViewTransition(updateDOM);
+            } else {
+                updateDOM();
+            }
+        }
+
+        // Filtro superior de proyectos con View Transitions API
+        function filterProjects(category, button) {
+            const updateFilter = () => {
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                document.querySelectorAll('.project-card').forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            };
+
+            if (document.startViewTransition) {
+                document.startViewTransition(updateFilter);
+            } else {
+                updateFilter();
+            }
+        }
+
+        // Control de Modales Técnicos
+        function openModal(id) {
+            document.getElementById(id).classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('open');
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeModalOnBg(event, id) {
+            if (event.target.id === id) {
+                closeModal(id);
+            }
+        }
+
+        // Cerrar modal con tecla Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.open').forEach(modal => {
+                    modal.classList.remove('open');
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Animaciones de revelado en scroll
         document.addEventListener('DOMContentLoaded', () => {
             const reveals = document.querySelectorAll('.reveal');
             
@@ -589,12 +1297,12 @@
                 entries.forEach(entry => {
                     if(entry.isIntersecting) {
                         entry.target.classList.add('active');
-                        observer.unobserve(entry.target); 
+                        observer.unobserve(entry.target);
                     }
                 });
             }, {
-                threshold: 0.1,
-                rootMargin: "0px 0px -50px 0px"
+                threshold: 0.12,
+                rootMargin: "0px 0px -40px 0px"
             });
 
             reveals.forEach(reveal => {
